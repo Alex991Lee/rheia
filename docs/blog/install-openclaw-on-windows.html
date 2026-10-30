@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>“我的发！？”反复在WSL和WindowsHub上横跳这么久才知道原来OpenClaw的安装也可以这么简单</title>
+<meta name="description" content="一个许久没有用命令行的老东西，讲讲为什么 Linux 才是 OpenClaw 的主场，以及 Rheia 是怎么来的。">
+<style>
+:root{--bg:#0d1117;--fg:#e6edf3;--dim:#9aa7b4;--line:#21262d;--accent:#f04438}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.9 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+a{color:#58a6ff;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.top{padding:28px 0 0;font-size:14px;color:var(--dim)}
+article{padding:20px 0 80px}
+h1{font-size:30px;line-height:1.45;margin:18px 0 28px;letter-spacing:-0.5px}
+h2{font-size:21px;margin:40px 0 16px;padding-top:18px;border-top:1px solid var(--line)}
+p{margin:0 0 20px}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+.meta{color:var(--dim);font-size:15px;margin:6px 0}
+</style>
+</head>
+<body>
+<div class="wrap top"><a href="../">← Rheia</a> · <a href="en/install-openclaw-on-windows.html">English</a> · <a href="https://github.com/Alex991Lee/rheia">GitHub</a></div>
+<article class="wrap">
+<h1>“我的发！？”反复在WSL和WindowsHub上横跳这么久才知道原来OpenClaw的安装也可以这么简单</h1>
+<p>对于一个许久没有用命令行的老东西来说，装OpenClaw的痛点显而易见：依赖、门槛、源、镜像……任何一步行差踏错都有可能让我从头来过，就在我犹豫要不要放弃OpenClaw转向使用别的Agent 助手时，WindowsHub横空出世，但是当我把自己那张肿得老高的老脸贴上去时一切都已经来不及了：打了勾、弹了绿字，重启后什么都没变；删掉的配置还在跑；卡在转圈上什么都不报；装完才知道哪一步错了……单看都不致命，但它们能让你本想在妹子面前显摆一下，最后变成一场尴尬炼狱。</p>
+<p>后来我把文件系统、容器、栈、无头这些挨个想了一遍，才明白为什么 Linux 才是 OpenClaw 的主场。所以我果断弃用了 WindowsHub，又把 OpenClaw 请回它的主场 WSL，并做了 Rheia——一个只需要在 Windows 侧双击就能部署它的项目。</p>
+<p>为了实现上述目标，我决定放弃坚持了十多年的大部分面向对象思想，在核心部分采用了以声明作为数据驱动的支点，以期永远紧跟着官方步伐，而不是自己发明一套所谓的安装器，从而保证了不会偏移官方对OpenClaw的定义。</p>
+<p>所以，你现在如果能有空试试，你就会发现，可能你杯子里的咖啡还没喝完，接近满血版的OpenClaw就会活蹦乱跳地出现在你机器上，当然如果你已经部署了OpenClaw，那一定记得勾选“已有 OpenClaw，仅安装 Rheia 作为管理器”的选项，你的数字资产有可能是无价之宝哦！</p>
+<p>你可以把Rheia看做是一个壳，我始终是这么叫它的，我喜欢开玩笑地说它是托尼·斯塔克的装甲，有了这层装甲OpenClaw就像拥有马克五（Mark V）的钢铁侠一样随时就位。为了让这个装甲更贴OpenClaw的身，我们还采取了“壳自愈”机制，让壳跟着当前版本走，而不是固守壳本身的样子。</p>
+<h2>它有毛病，你是用户，所以我有啥说啥不藏着</h2>
+<p>界面闪动是 PySide6 的沉疴痼疾。</p>
+<p>PySide6 底层运行 QtWebEngine（Chromium）。这套组合在部分显卡与驱动的搭配下会反复重绘：同一张网页，在 Chrome 里看着正常，放进 QtWebEngine 里就开始闪。成因在 Chromium 的合成层，不在业务代码——所以它不是打一个补丁就能修好的 bug，而是这条技术路线自带的代价。</p>
+<p>我试过 GPU flag、换 D3D11 后端、把动效减弱，能压住一部分，压不住全部。这不是偷懒，是这条路走到这儿就到头了。</p>
+<p>根治只有两条：换语言重写界面，或者买 Qt 的商业许可、走另一套渲染。两条都写在路线图上，因为它们都花钱、都花时间，嘴上说都是空头支票。</p>
+<p>如果你在意这件事，你也可以只拿它来部署OpenClaw然后继续在bash下敲openclaw dashboard。当然Rheia除了界面闪动还有很多亮点比如：Gateway 热诊断、初始化备份、恢复与导出对话、中国国内的主流频道 、Provider 控制台、记忆面板等等，此外Rheia不是一具空壳，是一套能开箱即用的准满血集合：技能审查、技能检索、联网搜索、持久记忆、Office 文档读写、浏览器自动化、长文摘要、复盘改进这些方面的技能和插件我们都为大家做了静默式轮询安装，只要配置好模型，它很快就能给你惊喜，篇幅所限，具体香不香得你自己细细探索。</p>
+<p>截止我写这篇介绍时，Rheia还是零 star； 这没什么可包装的，一个刚上线的仓库本来就该是零。我把它写出来，是因为我讨厌那种「上线即爆款」的述事。</p>
+<h2>所以</h2>
+<p>无论是是老程序猿还是代码小白，都不该被繁琐的命令行和各种版本依赖绑住你探索的脚步，该踩的坑我都帮各位看官踩过，该崴的脚我也为各位老少爷们儿，姐妹阿姨崴过；得！我的杯子空了又该去煮咖啡了，祝各位每天都能开心地去跟这只小龙虾玩耍！</p>
+<hr/>
+<p class="meta">项目是 MIT 开源的：https://github.com/Alex991Lee/rheia</p>
+<p class="meta">安装包在 Releases 里，3.5 MB。</p>
+</article>
+</body>
+</html>

@@ -1,0 +1,4 @@
+#include <windows.h>
+
+// Rheia 商标图标资源
+IDI_APPICON ICON "Rheia.ico"

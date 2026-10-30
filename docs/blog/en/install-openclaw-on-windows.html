@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenClaw on Windows: the install was never the hard part — Rheia</title>
+<meta name="description" content="Why Linux is the real home of OpenClaw, and why Rheia exists.">
+<style>
+:root{--bg:#0d1117;--fg:#e6edf3;--dim:#9aa7b4;--line:#21262d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.85 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:#58a6ff;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.top{padding:28px 0 0;font-size:14px;color:var(--dim)}
+article{padding:20px 0 80px}
+h1{font-size:30px;line-height:1.4;margin:18px 0 28px;letter-spacing:-0.5px}
+h2{font-size:21px;margin:40px 0 16px;padding-top:18px;border-top:1px solid var(--line)}
+p{margin:0 0 20px}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+.meta{color:var(--dim);font-size:15px;margin:6px 0}
+</style>
+</head>
+<body>
+<div class="wrap top"><a href="../../">← Rheia</a> · <a href="../../en/">English site</a> · <a href="../install-openclaw-on-windows.html">中文</a> · <a href="https://github.com/Alex991Lee/rheia">GitHub</a></div>
+<article class="wrap">
+<h1>OpenClaw on Windows: the install was never the hard part</h1>
+<p>For an old dog like me — someone who hasn&#x27;t touched a command line in years — the pain points of installing OpenClaw are painfully obvious: dependencies, hoops, sources, mirrors. One wrong step and you start over. I was on the verge of giving up on OpenClaw and switching to another agent assistant when Windows Hub came along. So I pressed my puffy old face right up against it — and by then it was too late. Checked the box, got the green toast, restarted, nothing had changed. Deleted configs were still running. Stuck on a spinner with no error. Only after the install did I find out which step had failed. Individually none of it is fatal. Together, it can turn a quick flex in front of a girl into a small hell of embarrassment.</p>
+<p>Later I went through filesystems, containers, stacks, headless and remote one by one, and only then did I understand why Linux is OpenClaw&#x27;s real home. So I dropped Windows Hub, brought OpenClaw back home — to WSL — and built Rheia: a project that needs nothing more than a double-click on the Windows side.</p>
+<p>To get there, I gave up most of the object-oriented thinking I had held onto for over a decade. At its core, Rheia is driven by declarations rather than code, so it can follow upstream instead of inventing yet another “installer” — which is how it stays aligned with the official definition of OpenClaw.</p>
+<p>So if you have a moment to try it: your coffee may still be warm when a nearly full-strength OpenClaw shows up on your machine. And if OpenClaw is already deployed, remember to tick “OpenClaw already installed — install Rheia as a manager only”. Your digital assets can be priceless.</p>
+<p>Think of Rheia as a shell — that&#x27;s what I&#x27;ve always called it. I like to joke that it&#x27;s Tony Stark&#x27;s armour: with it on, OpenClaw is Iron Man in the Mark V, always ready. To make the armour fit OpenClaw better, we added “shell self-healing”: the shell follows the current version instead of clinging to its own shape.</p>
+<h2>It has flaws — you&#x27;re the user, so I won&#x27;t hide them.</h2>
+<p>The screen flicker is PySide6&#x27;s chronic disease.</p>
+<p>PySide6 runs on QtWebEngine (Chromium). On some GPU and driver combinations that stack repaints over and over: the same page is fine in Chrome and flickers inside QtWebEngine. The cause is in Chromium&#x27;s compositor, not in application code — so it isn&#x27;t a bug you patch away, it&#x27;s the price of this technical path.</p>
+<p>I tried GPU flags, the D3D11 backend, dialling down animations. They suppress part of it, never all of it. That isn&#x27;t laziness — this is simply where this road ends. There are only two real fixes: rewrite the interface in another language, or buy a commercial Qt licence and use a different renderer. Both are on the roadmap, because both cost money and time. Talk is cheap.</p>
+<p>If that bothers you, you can also use Rheia purely to deploy OpenClaw and keep typing openclaw dashboard in bash. That said, Rheia is more than flicker: live Gateway diagnostics, initial-setup backup, restore and conversation export, mainstream Chinese channels, a Provider console, a memory panel. And it isn&#x27;t an empty shell — it&#x27;s a ready-to-use, near-full-strength set: skill vetting, skill discovery, web search, persistent memory, Office document read and write, browser automation, long-text summarisation, self-improvement. We install those skills and plugins quietly in the background. Configure a model and it will surprise you quickly. Space is limited — whether it&#x27;s any good, you&#x27;ll have to find out.</p>
+<p>As of writing, Rheia still has zero stars. There&#x27;s nothing to dress up: a repository that just launched is supposed to be at zero. I&#x27;m writing this down because I&#x27;m tired of the “overnight success” narrative.</p>
+<h2>So</h2>
+<p>Old programmer or complete beginner, nobody should be held back from exploring by command lines and version dependencies. I&#x27;ve stepped in every pit for you; I&#x27;ve twisted every ankle for you too. Well — my cup is empty, time to brew another pot.</p>
+<p>May you have fun with this little lobster, every day.</p>
+<hr/>
+<p class="meta">MIT licensed: <a href="https://github.com/Alex991Lee/rheia">github.com/Alex991Lee/rheia</a></p>
+<p class="meta">Installer on the Releases page, 3.5 MB.</p>
+</article>
+</body>
+</html>

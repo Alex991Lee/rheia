@@ -1,0 +1,12 @@
+# GitHub Sponsors（需先开通 GitHub Sponsors 账户，把用户名填进去后删掉本行注释）
+# github: [your-github-username]
+
+# Ko-fi
+# ko_fi: your-kofi-name
+
+# 爱发电（国内）
+# custom: ["https://afdian.com/a/your-name"]
+
+# —— 说明 ——
+# 本文件改名为 FUNDING.yml 并填上真实账号后，仓库页才会出现 Sponsor 按钮。
+# 现在保留 .example 扩展名，GitHub 不会读取，因此不会显示一个点不动的按钮。

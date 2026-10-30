@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rheia — 把 Linux 服务器级的 OpenClaw，做成一次双击</title>
+<meta name="description" content="Rheia 是 Windows 上的 OpenClaw 管理器外壳：一键装好 WSL2 + Ubuntu + Node + 官方 OpenClaw + systemd 网关，双击即用。">
+<style>
+:root{--bg:#0d1117;--fg:#e6edf3;--dim:#9aa7b4;--line:#21262d;--accent:#f04438;--card:#161b22}
+*{box-sizing:border-box}
+.lang{position:absolute;top:20px;right:24px;font-size:14px;color:var(--dim)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+a{color:#58a6ff;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+header{padding:88px 0 56px;text-align:center;border-bottom:1px solid var(--line)}
+h1{font-size:46px;margin:0 0 12px;letter-spacing:-1px}
+.tag{font-size:20px;color:var(--dim);margin:0 auto 32px;max-width:620px}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:14px 30px;border-radius:8px;font-weight:600;font-size:17px}
+.btn:hover{background:#d6382c;text-decoration:none}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg);margin-left:10px}
+.meta{margin-top:18px;font-size:13px;color:var(--dim);word-break:break-all}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+h2{font-size:26px;margin:0 0 24px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.card h3{margin:0 0 8px;font-size:17px}
+.card p{margin:0;color:var(--dim);font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+th{color:var(--dim);font-weight:600}
+td.us{font-weight:700;color:#fff}
+code{background:#1f242c;padding:2px 6px;border-radius:4px;font-size:14px}
+pre{background:#161b22;border:1px solid var(--line);border-radius:8px;padding:14px 16px;overflow-x:auto;font-size:14px}
+ul{padding-left:20px}
+li{margin:6px 0}
+.note{background:#1b1f24;border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;color:var(--dim);font-size:15px}
+footer{padding:40px 0 64px;color:var(--dim);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang">简体中文 | <a href="en/">English</a></div>
+  <div class="wrap">
+    <h1>Rheia</h1>
+    <p class="tag">把 Linux 服务器级的 OpenClaw，做成一次双击。</p>
+    <a class="btn" href="https://github.com/Alex991Lee/rheia/releases/latest">下载 Rheia-Setup.exe</a>
+    <a class="btn ghost" href="https://github.com/Alex991Lee/rheia">GitHub</a>
+    <div class="meta">3.53 MB ｜ Windows 10 / 11 x64 ｜ MIT License<br>SHA256 b8fa7567187beff0b4c65b85e26c811e94ccd101f45a4fa4016fe3fc16f49215</div>
+  </div>
+  <div class="wrap" style="margin-top:40px">
+    <img src="screenshot.png" alt="Rheia 主界面" style="width:100%;border:1px solid var(--line);border-radius:12px">
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>它做的事</h2>
+    <div class="grid">
+      <div class="card"><h3>一键装好整条链</h3><p>WSL2 + Ubuntu + Node.js + 官方 OpenClaw + systemd 网关，一次装完，装完就能用。</p></div>
+      <div class="card"><h3>复用你的 Ubuntu</h3><p>不另建专属发行版。你机器上已有的 Ubuntu 直接用起来，磁盘不多占一份。</p></div>
+      <div class="card"><h3>始终是官方那版</h3><p>不 fork、不打补丁。官方每出一版，我们立即跟进，你拿到的是最新那一版。</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>与官方 Windows 方案的位置</h2>
+    <table>
+      <tr><th></th><th>官方 PowerShell 直装</th><th>官方 Windows Hub</th><th>Rheia</th></tr>
+      <tr><td>形态</td><td>命令行安装</td><td>WinUI 桌面应用</td><td class="us">桌面外壳</td></tr>
+      <tr><td>运行时</td><td>原生 Windows 进程</td><td>另建 app 专属 WSL 发行版</td><td class="us">你原有的 WSL2 + Ubuntu</td></tr>
+      <tr><td>已有 Ubuntu</td><td>不涉及</td><td>与之并存，磁盘多一份</td><td class="us">复用，零浪费</td></tr>
+      <tr><td>开机自启</td><td>自行配置</td><td>托盘</td><td class="us">systemd 服务，随机器启动</td></tr>
+      <tr><td>国内下载</td><td>直连官方源</td><td>直连官方源</td><td class="us">国内 / 国际镜像自动切换</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>装完就能办公</h2>
+    <p>网关连通后，壳会在后台静默装上一批东西：</p>
+    <ul>
+      <li><code>@openclaw/tavily-plugin</code> — 联网搜索</li>
+      <li><code>@mem9/mem9</code> — 持久记忆</li>
+      <li><code>@weiwei2027/office-toolkit</code> — Word / Excel / PPT / PDF</li>
+      <li><code>@cindypapa/agent-browser</code> — 浏览器自动化</li>
+      <li><code>@paudyyin/summarize</code> · <code>@pskoett/self-improving-agent</code> · <code>@guipi888/find-skills</code> · <code>@spclaudehome/skill-vetter</code></li>
+    </ul>
+    <p>配套一并直装：LibreOffice（soffice 引擎）、Chrome 内核、python-docx / python-pptx / openpyxl / pymupdf / reportlab。</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>关于界面，我们诚实交底</h2>
+    <p>PySide6（QtWebEngine）在部分机器上有界面闪动，成因在 Chromium 合成层，不在业务代码。我们试过 GPU flag、D3D11 后端、减弱动效，能压住一部分，但不能对所有显卡保证。</p>
+    <div class="note">这是选型时就知道的取舍，不是事故。根治的方向写进了路线图：换语言、买商业许可。</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>MIT License ｜ OpenClaw 为 MIT（© 2026 OpenClaw Foundation）｜ PySide6 主体 LGPLv3</p>
+    <p><a href="blog/install-openclaw-on-windows.html">读一读：为什么会有 Rheia</a></p>
+    <p>本项目免费开源，捐赠完全自愿。<a href="https://github.com/Alex991Lee/rheia">在 GitHub 上查看源码</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

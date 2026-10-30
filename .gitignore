@@ -1,0 +1,33 @@
+# 发布物（安装包走 GitHub Releases，也可直放仓库根）
+Released/
+
+# 编译中间产物
+*.obj
+*.res
+*.pdb
+*.ilk
+*_new.exe
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+
+# 本地/临时
+*.bak
+*.bak-*
+*.tmp
+.indm-tmp-*
+.DS_Store
+Thumbs.db
+
+# 运行期数据（scout/filter 现场生成，不入库）
+kernel/large/manifest.signal
+kernel/large/mechanisms_raw.json
+kernel/large/ambiguity_candidates.json
+kernel/large/miss.json
+
+# 本地备份 / 安装包解包工具
+_backup_*/
+tools/innoextract/
+tools/innounp.exe
+tools/innounp2/

@@ -1,0 +1,17 @@
+{
+  "_note": "组件声明：只声明「装什么 / 从哪来 / 实例路径」，动作固定在消费端（install.py / slot_discovery）。钩子与 lifecycle 归组件自己的 manifest（如 openclaw.plugin.json），这里不复述——第二份真相会漂移。",
+  "components": [
+    {
+      "id": "python-runtime",
+      "type": "runtime",
+      "installer": "download_python.ps1",
+      "lifecycle": "critical"
+    },
+    {
+      "id": "persona-slot-engine",
+      "type": "plugin",
+      "source": "personal-slot",
+      "lifecycle": "critical"
+    }
+  ]
+}

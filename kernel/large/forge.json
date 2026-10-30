@@ -1,0 +1,4125 @@
+{
+  "_meta": {
+    "description": "FORGE - 完整Qt6控件样式/行为数据定义，所有控件定义参考Qt6官方文档",
+    "source": "forge",
+    "version": "2.0.0",
+    "widget_library_note": "widget_library 是 Qt6 标准件清单，供文档/IDE 提示参考，非运行时渲染路径。实际渲染走: runtime.registry (field_renderer.build_field → get_field → 业务 builder)。仅 _WIDGET_MAP 的 8 个基础类型（QLineEdit/QSpinBox/QComboBox/...）被 field_renderer fallback 使用。如需新增业务组件，在 ui/wizard/fields/{auth,provider,model}.py 的 register_*_fields() 中注册。"
+  },
+  "ambiguity_dict": {
+    "api_signals": {
+      "_note": "官方 config-tools.md:532 列出的 models.providers.*.api request adapter 全集。标准名是官方明文，信号词含标准名本身 + 文档 Property 表里的描述变体。spider 抓 api 字段走 _normalize_api 查这张表归一，替代 UI 里 if name!=ollama 硬编。",
+      "anthropic-messages": [
+        "anthropic-messages",
+        "anthropic-messages-compatible",
+        "anthropic messages"
+      ],
+      "azure-openai-responses": [
+        "azure-openai-responses",
+        "azure openai"
+      ],
+      "bedrock-converse-stream": [
+        "bedrock-converse",
+        "bedrock converse stream"
+      ],
+      "github-copilot": [
+        "github-copilot",
+        "github copilot"
+      ],
+      "google-generative-ai": [
+        "google-generative-ai",
+        "gemini"
+      ],
+      "google-vertex": [
+        "google-vertex",
+        "vertex"
+      ],
+      "ollama": [
+        "ollama"
+      ],
+      "openai-chatgpt-responses": [
+        "openai-chatgpt-responses",
+        "chatgpt responses"
+      ],
+      "openai-completions": [
+        "openai-completions",
+        "openai-compatible",
+        "openai compatible",
+        "chat completions"
+      ],
+      "openai-responses": [
+        "openai-responses",
+        "responses api"
+      ]
+    },
+    "auth_signals": {
+      "aws_sdk": [
+        "aws credential",
+        "iam credential",
+        "credential chain",
+        "aws sdk"
+      ],
+      "cli_reuse": [
+        "cli credential",
+        "claude -p",
+        "cli reuse"
+      ],
+      "custom_proxy": [
+        "proxy",
+        "base url override",
+        "openai-compatible proxy"
+      ],
+      "device_code": [
+        "device code",
+        "device flow",
+        "device-code"
+      ],
+      "no_key": [
+        "none required",
+        "any value works",
+        "key-free",
+        "no auth",
+        "not required",
+        "signed-in local"
+      ],
+      "oauth": [
+        "oauth",
+        "sign-in",
+        "sign in",
+        "login flow"
+      ],
+      "service_account": [
+        "service account",
+        "service_account",
+        "GOOGLE_APPLICATION_CREDENTIALS"
+      ]
+    },
+    "collaborator_terms": {
+      "collaborators": {
+        "lmstudio": {
+          "default_base": "http://localhost:1234/v1",
+          "discover": "/v1/models",
+          "env_key": "LM_API_TOKEN",
+          "local_api_key": "lmstudio",
+          "parse": {
+            "field": "id",
+            "key": "data"
+          }
+        },
+        "ollama": {
+          "default_base": "http://127.0.0.1:11434",
+          "discover": "/api/tags",
+          "env_key": "OLLAMA_API_KEY",
+          "local_api_key": "ollama-local",
+          "parse": {
+            "field": "name",
+            "key": "models"
+          }
+        },
+        "sglang": {
+          "default_base": "http://127.0.0.1:30000/v1",
+          "discover": "/v1/models",
+          "env_key": "SGLANG_API_KEY",
+          "local_api_key": "sglang-local",
+          "parse": {
+            "field": "id",
+            "key": "data"
+          }
+        },
+        "vllm": {
+          "default_base": "http://127.0.0.1:8000/v1",
+          "discover": "/v1/models",
+          "env_key": "VLLM_API_KEY",
+          "local_api_key": "vllm-local",
+          "parse": {
+            "field": "id",
+            "key": "data"
+          }
+        }
+      },
+      "discovery": {
+        "tags_models": {
+          "field": "name",
+          "key": "models"
+        },
+        "v1_models_data": {
+          "field": "id",
+          "key": "data"
+        }
+      }
+    },
+    "field_aliases": {
+      "auth": [
+        "auth",
+        "auth env var",
+        "auth env var(s)",
+        "authentication",
+        "Credential Variable",
+        "Also accepted (compat)",
+        "Env var",
+        "Preferred env var",
+        "Runtime env vars",
+        "TTS auth",
+        "Token Plan env var",
+        "TokenHub auth env var",
+        "TokenPlan auth env var"
+      ],
+      "base_url": [
+        "base url",
+        "default base url",
+        "suggested base url",
+        "endpoint"
+      ],
+      "plugin": [
+        "plugin",
+        "plugin package",
+        "[OpenAI image and video generation](/providers/openai/image-and-video)",
+        "`codex` plugin"
+      ],
+      "provider_id": [
+        "provider",
+        "provider id",
+        "provider ids",
+        "providers",
+        "API",
+        "Contract",
+        "Default URL",
+        "Default model",
+        "Default voice",
+        "Direct CLI flag",
+        "Model",
+        "Onboarding flag",
+        "Package",
+        "Text-to-speech",
+        "**Go**",
+        "**Zen**",
+        "Account without GPT-5.6 access",
+        "Aliases",
+        "Audio transcription",
+        "Batch speech-to-text",
+        "Chat / model provider",
+        "ChatGPT/Codex subscription, native Codex runtime",
+        "Choose an exact GPT-5.6 tier",
+        "Cloud only",
+        "Config path",
+        "Default alias",
+        "Default file output",
+        "Default region",
+        "Direct API-key billing for agent turns",
+        "Direct API-key billing, explicit OpenClaw runtime",
+        "Embedding model",
+        "Grok 4.20",
+        "Grok 4.3",
+        "Grok 4.5",
+        "Grok 4.6",
+        "Grok Build 0.1",
+        "Image generation or editing",
+        "Image generation/editing",
+        "Latest ChatGPT Instant model alias",
+        "Media understanding",
+        "Memory embeddings",
+        "OpenClaw reasoning default",
+        "Overrides",
+        "Region",
+        "Runtime provider",
+        "Shared tools",
+        "Speech contract",
+        "Speech-to-text",
+        "Standard",
+        "Step Plan",
+        "Suggested chat default",
+        "TTS default",
+        "Token Plan provider",
+        "TokenHub base URL",
+        "TokenHub direct CLI flag",
+        "TokenHub global base URL",
+        "TokenHub onboarding flag",
+        "TokenPlan base URL",
+        "TokenPlan direct CLI flag",
+        "TokenPlan onboarding flag",
+        "Transparent-background images",
+        "Video generation",
+        "Voxtral batch",
+        "Voxtral realtime",
+        "`openclaw models auth login --provider github-copilot --method device`",
+        "`openclaw models auth login-github-copilot`",
+        "Catalog query",
+        "Chat / Responses",
+        "Codex subscription models",
+        "Extra body",
+        "Format",
+        "Host",
+        "Images",
+        "Instructions",
+        "Moderation",
+        "Speed",
+        "Token limits",
+        "Videos",
+        "Voice"
+      ]
+    },
+    "mechanism_terms": {
+      "dispatch": {
+        "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` | | Rewrite the full outgoing reply, including media | `reply_payload_sending` | | Rewrite outgoing text or cancel a send | `message_sending` | | Collect model timing without raw conversation text | `model_call_started` / `model_call_ended` | | Flush state after a turn or at shutdown | `agent_end` / `gateway_stop` | The catalog is the registration API, not a promise that every runtime emits every hook.": "choose_a_hook_task_hook_reply_without_a_model_call_before_agent_",
+        "A suppressed result has `visibleReplySent: false`, does not emit `message_sent`, and does not count as a visible queued reply.": "a_suppressed_result_has_visiblereplysent_false_does_not_emit_mes",
+        "Core also owns terminal `message_sent` observation when the adapter opts in.": "core_also_owns_terminal_message_sent_observation_when_the_adapte",
+        "Core does not emit a successful `message_sent` for that result.": "core_does_not_emit_a_successful_message_sent_for_that_result",
+        "Use the provider-owned callback only when the branch cannot be declared before entering the provider funnel; it is mutually exclusive with `deliver` and `durable`.": "use_the_provider_owned_callback_only_when_the_branch_cannot_be_d",
+        "`before_agent_finalize` runs only when a harness is about to accept a natural final assistant answer.": "before_agent_finalize_runs_only_when_a_harness_is_about_to_accep",
+        "| | `visibleReplySent` | Set to `false` only when the provider produced no visible preview or final message.": "visiblereplysent_set_to_false_only_when_the_provider_produced_no"
+      },
+      "failure": {
+        "Block the run, tool call, or install": "block_the_run_tool_call_or_install",
+        "Fail closed: block the run, tool call, or install": "fail_closed_block_the_run_tool_call_or_install",
+        "Log and continue": "log_and_continue",
+        "Log and continue shutdown": "log_and_continue_shutdown",
+        "Log and skip the failed handler; retain other successful results": "log_and_skip_the_failed_handler_retain_other_successful_results",
+        "Record an attributed error outcome": "record_an_attributed_error_outcome"
+      },
+      "group": {
+        "Delivery settlement contract": "delivery_settlement_contract",
+        "Hook catalog": "hook_catalog",
+        "Receive acknowledgment policy": "receive_acknowledgment_policy",
+        "Registration and execution": "registration_and_execution"
+      },
+      "kind": {
+        "A promise for delayed native settlement of the same logical payload, such as closing or editing an in-place streaming card. Its resolved fields override the immediate result before terminal observation and `onDelivered`.": "a_promise_for_delayed_native_settlement_of_the_same_logical_payl",
+        "Actual provider identities for the visible send. Prefer a `MessageReceipt`; core uses its primary provider id for `message_sent`.": "actual_provider_identities_for_the_visible_send_prefer_a_message",
+        "After durable inbound metadata is recorded for deduplication and routing.": "after_durable_inbound_metadata_is_recorded_for_deduplication_and",
+        "After durable outbound delivery commits.": "after_durable_outbound_delivery_commits",
+        "After the agent run is dispatched.": "after_the_agent_run_is_dispatched",
+        "Claim": "claim",
+        "Evaluate": "evaluate",
+        "Gate": "gate",
+        "Modify": "modify",
+        "Modify / gate": "modify_gate",
+        "No asynchronous timeout": "no_asynchronous_timeout",
+        "No stage qualifies automatically; the caller decides when to acknowledge.": "no_stage_qualifies_automatically_the_caller_decides_when_to_ackn",
+        "Non-empty list of canonical OpenClaw tool ids handled by `before_tool_call` or `after_tool_call`, such as `exec`, `apply_patch`, or `spawn_agent`. Omit to match all tools. Empty lists, wildcards, blanks, and provider-specific aliases are invalid.": "non_empty_list_of_canonical_openclaw_tool_ids_handled_by_before_",
+        "Observe": "observe",
+        "Ordering; higher runs first.": "ordering_higher_runs_first",
+        "Provider-accepted visible text for the logical payload after native formatting or finalization. Omit it to use the prepared payload text for terminal observation. Media-only sends can omit it.": "provider_accepted_visible_text_for_the_logical_payload_after_nat",
+        "Sync modify": "sync_modify",
+        "Sync modify / gate": "sync_modify_gate",
+        "Typed intentional no-send reason after a modifying hook or payload policy settles. Hook cancellation can also include `cancelReason` and metadata. Core never calls the direct native adapter for a core-owned suppression.": "typed_intentional_no_send_reason_after_a_modifying_hook_or_paylo"
+      },
+      "task": {
+        "Add context or narrow tools for a turn": "add_context_or_narrow_tools_for_a_turn",
+        "Block a tool or request approval": "block_a_tool_or_request_approval",
+        "Collect model timing without raw conversation text": "collect_model_timing_without_raw_conversation_text",
+        "Flush state after a turn or at shutdown": "flush_state_after_a_turn_or_at_shutdown",
+        "Gate model input on a supported runner": "gate_model_input_on_a_supported_runner",
+        "Reply without a model call": "reply_without_a_model_call",
+        "Rewrite outgoing text or cancel a send": "rewrite_outgoing_text_or_cancel_a_send",
+        "Rewrite the full outgoing reply, including media": "rewrite_the_full_outgoing_reply_including_media"
+      }
+    },
+    "provider_identity": {
+      "custom_proxy": [
+        "community",
+        "not an openclaw plugin",
+        "community npm package",
+        "proxy"
+      ],
+      "local_runtime": [
+        "self-hosted",
+        "config-only",
+        "not a bundled",
+        "configure it under models.providers",
+        "custom"
+      ],
+      "no_key": [
+        "none required",
+        "any value works",
+        "no auth"
+      ]
+    }
+  },
+  "behavior_chains": {
+    "_note": "L4 行为链层：本文件只声明「选中一张卡之后该发生哪几步」。2026-09-21 核查：am/steak/forge 会把 ui_template/_form/behavior_chain 算进实例，但壳的 UI 里没有任何一处读它们（ui/ 下 ui_template、_form、preset_key、behavior_chain 零命中）⇒ 这一层现在没有执行端。所以 taxonomy_map 里不再指向未定义的链（原来 demand 指向不存在的 on_demand_selected，是悬空引用，已清空）。要真通 L4，得先给 large 的实例产物做 UI 消费端（渲染 + 执行这些步骤），那是独立一摊活，不是补一条链就算完。",
+    "on_leave_legacy": {
+      "chain": [
+        {
+          "step": "sync_into_state",
+          "sync_ref": "step_value_pass"
+        },
+        {
+          "condition": {
+            "field": "step_id",
+            "values": [
+              "provider"
+            ]
+          },
+          "step": "abort_verify_for_nav"
+        },
+        {
+          "step": "advance_to_next_flow_step"
+        }
+      ],
+      "trigger": "next_button_clicked"
+    },
+    "on_leave_rpc": {
+      "chain": [
+        {
+          "step": "validate",
+          "validation_ref": "step_validation"
+        },
+        {
+          "desc": "收集所有可见字段值",
+          "step": "collect_answer"
+        },
+        {
+          "desc": "QProcess非阻塞提交到WSL",
+          "step": "submit_answer"
+        },
+        {
+          "step": "wait_wsl_response"
+        },
+        {
+          "step": "advance_or_done"
+        }
+      ],
+      "trigger": "rpc_next_button_clicked"
+    },
+    "on_probe_refresh": {
+      "chain": [
+        {
+          "desc": "cap更新",
+          "step": "update_capabilities"
+        },
+        {
+          "schema_ref": "probe_schemas",
+          "step": "rebuild_schema"
+        },
+        {
+          "desc": "DynamicFormEngine.render_step(new_schema)",
+          "step": "render_step"
+        },
+        {
+          "step": "rebuild_depends_index"
+        },
+        {
+          "desc": "初始可见性",
+          "step": "update_all_dependencies"
+        },
+        {
+          "desc": "从state回填",
+          "step": "apply_preset"
+        },
+        {
+          "step": "refresh_embed_panels"
+        }
+      ],
+      "trigger": "probe_completed"
+    },
+    "on_select": {
+      "chain": [
+        {
+          "desc": "清空旧provider字段",
+          "step": "reset_provider_fields"
+        },
+        {
+          "fields": {
+            "auth_kind": "$spec.auth_kind",
+            "provider_id": "$spec.id"
+          },
+          "step": "write_state"
+        },
+        {
+          "desc": "清理兼容通道",
+          "step": "scrub_compat_lane"
+        },
+        {
+          "step": "apply_default_model"
+        },
+        {
+          "step": "apply_profile_defaults"
+        },
+        {
+          "step": "finalize_model"
+        },
+        {
+          "dispatch_ref": "L3_auth_dispatch",
+          "step": "show_auth_form"
+        },
+        {
+          "step": "apply_state_to_auth_widgets"
+        },
+        {
+          "step": "emit_validity_changed"
+        }
+      ],
+      "trigger": "provider_card_selected"
+    }
+  },
+  "channel_config_schema": {
+    "fields": {
+      "account_id": {
+        "default": "default",
+        "type": "string"
+      },
+      "app_token": {
+        "default": "",
+        "type": "string"
+      },
+      "channel_id": {
+        "required": true,
+        "type": "string"
+      },
+      "display_name": {
+        "default": "",
+        "type": "string"
+      },
+      "dm_policy": {
+        "default": "pairing",
+        "type": "string"
+      },
+      "extra": {
+        "default": {},
+        "type": "dict"
+      },
+      "needs_interactive_login": {
+        "default": false,
+        "type": "boolean"
+      },
+      "setup_hint": {
+        "default": "",
+        "type": "string"
+      },
+      "token": {
+        "default": "",
+        "type": "string"
+      }
+    }
+  },
+  "composite_presets": {
+    "api_config": {
+      "display": "form",
+      "style": {
+        "max_width": "480px",
+        "spacing": "lg"
+      },
+      "title": "API Configuration"
+    },
+    "catalog_card": {
+      "badges": {
+        "domestic": {
+          "bg": "#60a5fa",
+          "fg": "#0a0a0a"
+        },
+        "free": {
+          "bg": "#4ade80",
+          "fg": "#0a0a0a"
+        },
+        "oauth": {
+          "bg": "#8b5cf6",
+          "fg": "#ffffff"
+        },
+        "recommended": {
+          "bg": "#f37021",
+          "fg": "#0a0a0a"
+        }
+      },
+      "children": [
+        {
+          "children": [
+            {
+              "style": "font-weight: 600; font-size: 13px; color: WIZARD_TEXT_BRIGHT",
+              "widget": "QLabel"
+            },
+            {
+              "stretch": 1,
+              "widget": "QSpacerItem"
+            },
+            {
+              "condition": "badge",
+              "style": "badge_stylesheet(badge)",
+              "widget": "QLabel"
+            }
+          ],
+          "spacing": 8,
+          "widget": "QHBoxLayout"
+        },
+        {
+          "condition": "subtitle",
+          "style": "font-size: 11px; color: WIZARD_TEXT_MUTED",
+          "widget": "QLabel"
+        },
+        {
+          "condition": "footer",
+          "transparent": true,
+          "widget": "QWidget"
+        }
+      ],
+      "display": "frame",
+      "layout": {
+        "margins": [
+          10,
+          8,
+          10,
+          8
+        ],
+        "spacing": 4,
+        "type": "vbox"
+      },
+      "shape": "StyledPanel",
+      "signals": {
+        "clicked": "select",
+        "configure_requested": "open_config"
+      },
+      "states": {
+        "normal": {
+          "border": "1px solid #333333",
+          "hover": "1px solid #555555"
+        },
+        "selected": {
+          "bg": "#1a1a1a",
+          "border": "2px solid accent"
+        }
+      }
+    },
+    "channel_setup": {
+      "card_type": "channel_setup_card",
+      "columns": 2,
+      "display": "card_grid",
+      "style": {
+        "spacing": "lg"
+      },
+      "title": "Channel Setup"
+    },
+    "channels_configuration": {
+      "components": [
+        {
+          "style": "h3",
+          "text": "title",
+          "widget": "QLabel"
+        },
+        {
+          "text": "intro",
+          "widget": "QLabel"
+        },
+        {
+          "card_type": "CatalogCard",
+          "columns": 3,
+          "footer_button": "Configure",
+          "on_card_click": "toggle_selection",
+          "on_card_double_click": "open_config_dialog",
+          "widget": "QGridLayout"
+        }
+      ],
+      "display": "page",
+      "presentation": "form"
+    },
+    "done_page": {
+      "components": [
+        {
+          "style": "color: #4ade80; font-size: 48px",
+          "text": "✓",
+          "widget": "QLabel"
+        },
+        {
+          "text": "title",
+          "widget": "QLabel"
+        },
+        {
+          "text": "line1",
+          "widget": "QLabel"
+        },
+        {
+          "text": "line2",
+          "widget": "QLabel"
+        },
+        {
+          "object": "_host_gate",
+          "text": "Host Gate Status",
+          "widget": "QLabel"
+        },
+        {
+          "object": "_summary",
+          "text": "Summary",
+          "widget": "QLabel"
+        }
+      ],
+      "display": "page",
+      "host_gate_statuses": {
+        "checking": {
+          "color": "#fbbf24",
+          "text": "Checking..."
+        },
+        "fail": {
+          "color": "#f87171",
+          "texts": {
+            "health": "Health check failed",
+            "init_skipped": "Init skipped",
+            "no_token": "No token",
+            "no_url": "No URL",
+            "tcp": "TCP failed"
+          }
+        },
+        "ok": {
+          "color": "#4ade80",
+          "text": "Connected"
+        },
+        "warn": {
+          "color": "#fbbf24",
+          "texts": {
+            "gate_timeout": "Timeout",
+            "handoff_partial": "Partial"
+          }
+        }
+      },
+      "summary_fields": [
+        "provider",
+        "model",
+        "gateway_port",
+        "init_status"
+      ]
+    },
+    "feature_toggles": {
+      "display": "form",
+      "field_preset": "toggle_field",
+      "style": {
+        "spacing": "lg"
+      },
+      "title": "Feature Options"
+    },
+    "gateway_configuration": {
+      "components": [
+        {
+          "style": "h3",
+          "text": "title",
+          "widget": "QLabel"
+        },
+        {
+          "text": "subtitle",
+          "widget": "QLabel"
+        },
+        {
+          "fields": [
+            {
+              "default": 18789,
+              "label": "Port",
+              "range": [
+                1024,
+                65535
+              ],
+              "widget": "QSpinBox"
+            },
+            {
+              "choices": [
+                "LAN",
+                "Tailnet",
+                "Localhost"
+              ],
+              "label": "Bind Mode",
+              "widget": "QComboBox"
+            },
+            {
+              "choices": [
+                "Token",
+                "Password"
+              ],
+              "label": "Auth Mode",
+              "widget": "QComboBox"
+            },
+            {
+              "echo_mode": "Password",
+              "label": "Password",
+              "visible": "auth_mode == 'Password'",
+              "widget": "QLineEdit"
+            },
+            {
+              "label": "Tailnet",
+              "visible": "bind_mode == 'Tailnet'",
+              "widget": "QComboBox"
+            },
+            {
+              "label": "Install Daemon",
+              "widget": "QCheckBox"
+            },
+            {
+              "label": "Runtime",
+              "visible": "install_daemon == true",
+              "widget": "QComboBox"
+            },
+            {
+              "label": "Node Manager",
+              "visible": "install_daemon == true",
+              "widget": "QComboBox"
+            },
+            {
+              "label": "Workspace",
+              "widget": "QLineEdit"
+            }
+          ],
+          "widget": "QFormLayout"
+        }
+      ],
+      "display": "page",
+      "presentation": "terminal_form"
+    },
+    "gateway_setup": {
+      "display": "form",
+      "style": {
+        "max_width": "480px",
+        "spacing": "lg"
+      },
+      "title": "Gateway Configuration"
+    },
+    "init_pipeline": {
+      "components": [
+        {
+          "style": "h3",
+          "text": "title",
+          "widget": "QLabel"
+        },
+        {
+          "range": [
+            0,
+            100
+          ],
+          "widget": "QProgressBar"
+        },
+        {
+          "stretch": 1,
+          "widget": "TerminalView"
+        },
+        {
+          "children": [
+            {
+              "stretch": 1,
+              "widget": "QSpacerItem"
+            },
+            {
+              "object": "_btn_stop",
+              "text": "Stop",
+              "visible": false,
+              "widget": "QPushButton"
+            },
+            {
+              "object": "_btn",
+              "text": "Run",
+              "widget": "QPushButton"
+            }
+          ],
+          "widget": "QHBoxLayout"
+        }
+      ],
+      "display": "page",
+      "next_button_texts": {
+        "pipeline_continuable": "Continue",
+        "pipeline_finished": "Next",
+        "pipeline_running": "Wait...",
+        "pipeline_skippable": "Skip"
+      },
+      "pipeline_phases": [
+        "Boot: resolve CLI capabilities → build install plan",
+        "Onboard: write configuration",
+        "Models set: configure models",
+        "Memory embedding: configure memory",
+        "Web search: configure search",
+        "Skills: install skills",
+        "Channels: configure channels",
+        "Gateway service: start gateway",
+        "Health: health check",
+        "Doctor fix: repairs"
+      ],
+      "presentation": "form"
+    },
+    "init_progress": {
+      "display": "progress",
+      "style": {
+        "alignment": "center",
+        "spacing": "xl"
+      },
+      "title": "Initializing...",
+      "uses": "QProgressBar"
+    },
+    "memory_embedding": {
+      "components": [
+        {
+          "style": "h3",
+          "text": "title",
+          "widget": "QLabel"
+        },
+        {
+          "text": "subtitle",
+          "widget": "QLabel"
+        },
+        {
+          "object": "_choice",
+          "slot": "refresh_visibility",
+          "widget": "QComboBox"
+        },
+        {
+          "object": "_row_base",
+          "visible": "show_base",
+          "widget": "QWidget"
+        },
+        {
+          "object": "_row_model",
+          "visible": "show_model",
+          "widget": "QWidget"
+        },
+        {
+          "object": "_row_key",
+          "visible": "show_key",
+          "widget": "QWidget"
+        }
+      ],
+      "display": "page",
+      "presentation": "form",
+      "visibility_rules": {
+        "openai_compat": {
+          "show_base": true,
+          "show_key": true,
+          "show_model": true
+        },
+        "skip": {
+          "show_base": false,
+          "show_key": false,
+          "show_model": false
+        }
+      }
+    },
+    "model_pick": {
+      "card_type": "model_selection_card",
+      "columns": 2,
+      "display": "card_grid",
+      "presentation": "terminal_form",
+      "style": {
+        "spacing": "lg"
+      },
+      "title": "Select Model"
+    },
+    "model_selection": {
+      "components": [
+        {
+          "style": "h3",
+          "text": "title",
+          "widget": "QLabel"
+        },
+        {
+          "text": "pick_label",
+          "widget": "QLabel"
+        },
+        {
+          "editable": false,
+          "slot": "_sync_from_combo",
+          "widget": "QComboBox"
+        },
+        {
+          "object": "_hint",
+          "widget": "QLabel",
+          "word_wrap": true
+        },
+        {
+          "object": "_retry",
+          "slot": "_on_retry_clicked",
+          "text": "Refresh",
+          "widget": "QPushButton"
+        }
+      ],
+      "display": "page",
+      "list_sources_priority": [
+        "CLI: openclaw models list → filter by provider",
+        "Compat catalog: compat_catalog_models_for_provider(pid)",
+        "Gateway API: /v1/models",
+        "Manual input (fallback)"
+      ]
+    },
+    "provider_selection": {
+      "auth_forms": {
+        "api_key": {
+          "fields": [
+            {
+              "echo_mode": "Password",
+              "placeholder": "API Key",
+              "widget": "QLineEdit"
+            },
+            {
+              "slot": "_run_verify",
+              "text": "Test Connection",
+              "widget": "QPushButton"
+            },
+            {
+              "flat": true,
+              "slot": "_skip_verify",
+              "text": "Skip",
+              "widget": "QPushButton"
+            }
+          ]
+        },
+        "aws_creds": {
+          "fields": [
+            {
+              "text": "AWS提示",
+              "widget": "QLabel"
+            },
+            {
+              "slot": "_run_verify:aws_creds",
+              "text": "验证环境",
+              "widget": "QPushButton"
+            },
+            {
+              "flat": true,
+              "text": "跳过",
+              "widget": "QPushButton"
+            }
+          ]
+        },
+        "custom_proxy": {
+          "fields": [
+            {
+              "placeholder": "Base URL",
+              "widget": "QLineEdit"
+            },
+            {
+              "echo_mode": "Password",
+              "placeholder": "API Key",
+              "widget": "QLineEdit"
+            },
+            {
+              "placeholder": "Model ID",
+              "widget": "QLineEdit"
+            },
+            {
+              "placeholder": "API Format",
+              "widget": "QComboBox"
+            },
+            {
+              "slot": "_run_verify",
+              "text": "Test",
+              "widget": "QPushButton"
+            }
+          ]
+        },
+        "device_oauth": {
+          "fields": [
+            {
+              "text": "Device OAuth提示",
+              "widget": "QLabel"
+            },
+            {
+              "label": "Qwen Plugin",
+              "object_name": "_qwen_plugin_cb",
+              "widget": "QCheckBox"
+            },
+            {
+              "echo_mode": "Password",
+              "placeholder": "OAuth Token",
+              "widget": "QLineEdit"
+            },
+            {
+              "slot": "_run_verify:oauth",
+              "text": "Login",
+              "widget": "QPushButton"
+            },
+            {
+              "flat": true,
+              "text": "Skip",
+              "widget": "QPushButton"
+            }
+          ]
+        },
+        "gcloud_adc": {
+          "fields": [
+            {
+              "text": "GCloud提示",
+              "widget": "QLabel"
+            },
+            {
+              "slot": "_run_verify:gcloud_adc",
+              "text": "验证环境",
+              "widget": "QPushButton"
+            },
+            {
+              "flat": true,
+              "text": "跳过",
+              "widget": "QPushButton"
+            }
+          ]
+        },
+        "no_key": {
+          "fields": [
+            {
+              "slot": "_probe_ollama",
+              "text": "Probe",
+              "widget": "QPushButton"
+            }
+          ]
+        },
+        "oauth": {
+          "fields": [
+            {
+              "echo_mode": "Password",
+              "placeholder": "OAuth Token",
+              "widget": "QLineEdit"
+            },
+            {
+              "slot": "_run_verify",
+              "text": "Login",
+              "widget": "QPushButton"
+            }
+          ]
+        },
+        "optional_key": {
+          "fields": [
+            {
+              "echo_mode": "Password",
+              "placeholder": "Optional Key",
+              "widget": "QLineEdit"
+            },
+            {
+              "slot": "_run_verify:optional",
+              "text": "验证",
+              "widget": "QPushButton"
+            },
+            {
+              "flat": true,
+              "text": "跳过",
+              "widget": "QPushButton"
+            }
+          ]
+        },
+        "placeholder": {
+          "fields": []
+        },
+        "plugin_oauth": {
+          "fields": [
+            {
+              "echo_mode": "Password",
+              "placeholder": "Plugin Token",
+              "widget": "QLineEdit"
+            },
+            {
+              "slot": "_run_verify:plugin_enable",
+              "text": "Enable",
+              "widget": "QPushButton"
+            },
+            {
+              "slot": "_run_verify:oauth",
+              "text": "Login",
+              "widget": "QPushButton"
+            },
+            {
+              "flat": true,
+              "text": "Skip",
+              "widget": "QPushButton"
+            }
+          ]
+        }
+      },
+      "catalog": {
+        "card_type": "provider_card",
+        "columns": 3,
+        "custom_nav": {
+          "orientation": "vertical",
+          "type": "QListWidget",
+          "width": 196
+        },
+        "display": "card_grid",
+        "on_card_click": {
+          "action": "switch_auth_form",
+          "target": "_auth_stack"
+        },
+        "scrollable": true
+      },
+      "components": [
+        {
+          "style": "h3",
+          "text": "title",
+          "widget": "QLabel"
+        },
+        {
+          "style": "muted",
+          "text": "subtitle",
+          "widget": "QLabel"
+        },
+        {
+          "stretch": 1,
+          "widget": "ProviderCatalogGrid"
+        },
+        {
+          "style": "bold",
+          "text": "auth_title",
+          "widget": "QLabel"
+        },
+        {
+          "object": "_auth_stack",
+          "widget": "QStackedWidget"
+        },
+        {
+          "object": "_verify_warn",
+          "style": "color: #fbbf24",
+          "visible": false,
+          "widget": "QLabel"
+        },
+        {
+          "visible": false,
+          "widget": "TerminalView"
+        }
+      ],
+      "display": "page",
+      "presentation": "card_catalog"
+    },
+    "skill_selection": {
+      "display": "list",
+      "style": {
+        "spacing": "md"
+      },
+      "title": "Select Skills"
+    },
+    "skills_configuration": {
+      "components": [
+        {
+          "style": "h3",
+          "text": "title",
+          "widget": "QLabel"
+        },
+        {
+          "widget": "TerminalCommandHintBar"
+        },
+        {
+          "object": "_probe_ctx",
+          "widget": "QLabel"
+        },
+        {
+          "text": "Refresh",
+          "widget": "QPushButton"
+        },
+        {
+          "children": [
+            {
+              "object": "_list_avail",
+              "title": "Available",
+              "widget": "QListWidget"
+            },
+            {
+              "children": [
+                {
+                  "object": "_hint_middle",
+                  "widget": "QLabel"
+                },
+                {
+                  "object": "_btn_middle",
+                  "text": "Install",
+                  "widget": "QPushButton"
+                },
+                {
+                  "object": "_status",
+                  "widget": "QLabel"
+                }
+              ],
+              "widget": "QWidget"
+            },
+            {
+              "object": "_list_inst",
+              "title": "Installed",
+              "widget": "QListWidget"
+            }
+          ],
+          "orientation": "horizontal",
+          "widget": "QSplitter"
+        }
+      ],
+      "display": "page",
+      "next_enabled": "always (skip allowed)",
+      "presentation": "terminal_form"
+    },
+    "step_indicator": {
+      "display": "horizontal_labels",
+      "separator": "—",
+      "states": {
+        "current": {
+          "color": "WIZARD_TEXT_BRIGHT",
+          "font_size": "12px",
+          "font_weight": "600",
+          "symbol": "●"
+        },
+        "done": {
+          "color": "WIZARD_TEXT",
+          "font_size": "12px",
+          "symbol": "●"
+        },
+        "pending": {
+          "color": "WIZARD_TEXT_DIM",
+          "font_size": "12px",
+          "symbol": "○"
+        }
+      }
+    },
+    "web_search_configuration": {
+      "components": [
+        {
+          "style": "h3",
+          "text": "title",
+          "widget": "QLabel"
+        },
+        {
+          "text": "subtitle",
+          "widget": "QLabel"
+        },
+        {
+          "text": "official_scope_hint",
+          "widget": "QLabel"
+        },
+        {
+          "fields": [
+            {
+              "choices": [
+                "Brave",
+                "Exa",
+                "Tavily",
+                "Perplexity",
+                "SearXNG",
+                "None"
+              ],
+              "label": "Provider",
+              "slot": "on_pick",
+              "widget": "QComboBox"
+            },
+            {
+              "echo_mode": "Password",
+              "label": "API Key",
+              "visible": "needs_api_key(provider)",
+              "widget": "QLineEdit"
+            },
+            {
+              "label": "Base URL",
+              "visible": "needs_base_url(provider)",
+              "widget": "QLineEdit"
+            }
+          ],
+          "widget": "QFormLayout"
+        }
+      ],
+      "display": "page",
+      "presentation": "form"
+    },
+    "welcome_page": {
+      "background": {
+        "colors": [
+          "#0e0c0a",
+          "#141110"
+        ],
+        "type": "gradient"
+      },
+      "presentation": "form",
+      "style": {
+        "alignment": "center",
+        "max_width": "500px",
+        "spacing": "3xl"
+      },
+      "subtitle": "Setup Wizard",
+      "title": "Rheia OpenClaw"
+    },
+    "wizard_dialog": {
+      "build_strategy": "deferred",
+      "components": [
+        {
+          "position": "top",
+          "separator": "—",
+          "widget": "StepIndicator"
+        },
+        {
+          "position": "center",
+          "stretch": 1,
+          "widget": "QStackedWidget"
+        },
+        {
+          "children": [
+            {
+              "object": "wizSecondary",
+              "slot": "_go_prev",
+              "text": "Back",
+              "widget": "QPushButton"
+            },
+            {
+              "object": "wizSecondary",
+              "slot": "_on_skip_step",
+              "text": "Skip",
+              "widget": "QPushButton"
+            },
+            {
+              "stretch": 1,
+              "widget": "QSpacerItem"
+            },
+            {
+              "object": "wizPrimaryNext",
+              "slot": "_go_next",
+              "text": "Next",
+              "widget": "QPushButton"
+            }
+          ],
+          "position": "bottom",
+          "widget": "QHBoxLayout"
+        }
+      ],
+      "display": "dialog",
+      "min_size": [
+        1080,
+        640
+      ],
+      "resize": [
+        1120,
+        680
+      ],
+      "timer_delay_ms": 0
+    }
+  },
+  "display_surfaces": {
+    "active": {
+      "applies_to": "用户交互的主内容面板",
+      "color": "#e2e8f0"
+    },
+    "idle": {
+      "applies_to": "非活跃/次要内容",
+      "color": "#64748b"
+    },
+    "rules": {
+      "active_zone_gets_emphasized": true,
+      "single_emphasized_border_per_layer": true,
+      "zone_frame_active_index": 0
+    }
+  },
+  "display_zones": {
+    "field_display_zones": {
+      "*": "control",
+      "channels_setup": "embed",
+      "model_pick_setup": "embed",
+      "probe_context": "chrome",
+      "provider_setup": "embed",
+      "skills_setup": "embed"
+    },
+    "frame_rules": {
+      "active_zone_index": 0,
+      "needs_frame": "len(distinct_zones) > 1 AND NOT single_embed_shell AND NOT embed_owns_display_surface",
+      "single_embed_skip": "is_single_embed_shell_step(fields) → 不分frame",
+      "zone_grouping": "按 display_zone 属性分组"
+    },
+    "lanes": {
+      "chrome": {
+        "field_types": [
+          "probe_context",
+          "display"
+        ],
+        "owns_display_surface": false,
+        "stretch": 0
+      },
+      "control": {
+        "field_types": [
+          "*"
+        ],
+        "owns_display_surface": false,
+        "stretch": 0
+      },
+      "embed": {
+        "field_types": [
+          "provider_setup",
+          "model_pick_setup",
+          "skills_setup",
+          "channels_setup"
+        ],
+        "owns_display_surface": true,
+        "stretch": 1
+      }
+    }
+  },
+  "presets": {
+    "api_key_input": {
+      "children": [
+        {
+          "hints": {
+            "echo_mode": "Password",
+            "flex": 1,
+            "placeholder": "请输入密钥..."
+          },
+          "widget": "QLineEdit"
+        },
+        {
+          "text": "测试",
+          "variant": "secondary",
+          "widget": "QPushButton",
+          "width": "80px"
+        },
+        {
+          "text": "保存",
+          "variant": "primary",
+          "widget": "QPushButton",
+          "width": "80px"
+        }
+      ],
+      "layout": "hbox",
+      "style": {
+        "spacing": "md"
+      },
+      "widget": "composite"
+    },
+    "automation_card": {
+      "cli": true,
+      "fields": [
+        "trigger",
+        "action"
+      ],
+      "header": {
+        "font_size": "md",
+        "font_weight": "semibold",
+        "show_icon": false
+      },
+      "layout": "panel",
+      "style": {
+        "bg": "card",
+        "border_radius": "lg",
+        "padding": "xl",
+        "shadow": "card"
+      },
+      "widget": "card"
+    },
+    "channel_setup_card": {
+      "fields": [
+        "name",
+        "auth"
+      ],
+      "header": {
+        "font_size": "md",
+        "font_weight": "semibold",
+        "show_icon": true
+      },
+      "layout": "form",
+      "steps": true,
+      "style": {
+        "bg": "card",
+        "border_radius": "lg",
+        "padding": "xl",
+        "shadow": "card"
+      },
+      "widget": "card"
+    },
+    "consumer_card": {
+      "fields": [
+        "string",
+        "multiline"
+      ],
+      "header": {
+        "font_size": "md",
+        "font_weight": "semibold",
+        "show_icon": true
+      },
+      "layout": "panel",
+      "style": {
+        "bg": "card",
+        "border_radius": "lg",
+        "padding": "xl",
+        "shadow": "card"
+      },
+      "widget": "card"
+    },
+    "demand_card": {
+      "fields": [
+        "string",
+        "multiline"
+      ],
+      "header": {
+        "font_size": "md",
+        "font_weight": "semibold",
+        "show_icon": false
+      },
+      "layout": "panel",
+      "style": {
+        "bg": "card",
+        "border_radius": "lg",
+        "padding": "xl",
+        "shadow": "card"
+      },
+      "widget": "card"
+    },
+    "gateway_card": {
+      "connection": true,
+      "fields": [
+        "endpoint",
+        "auth",
+        "health"
+      ],
+      "header": {
+        "font_size": "md",
+        "font_weight": "semibold",
+        "icon_color": "accent",
+        "show_icon": true
+      },
+      "layout": "form",
+      "style": {
+        "bg": "card",
+        "border_color": "focus",
+        "border_radius": "lg",
+        "padding": "xl"
+      },
+      "widget": "card"
+    },
+    "memory_embedding_card": {
+      "fields": [
+        "display_name",
+        "api_key_input",
+        "base_url_input",
+        "model_input_manual"
+      ],
+      "layout": "vbox",
+      "style": {
+        "bg": "card",
+        "border_radius": "lg",
+        "padding": "md"
+      },
+      "widget": "card"
+    },
+    "generic_card": {
+      "fields": [
+        "name"
+      ],
+      "layout": "list",
+      "style": {
+        "bg": "card",
+        "border_radius": "lg",
+        "padding": "md"
+      },
+      "widget": "card"
+    },
+    "model_selection_card": {
+      "clickable": true,
+      "fields": [
+        "model_name",
+        "capabilities",
+        "speed",
+        "context_window"
+      ],
+      "layout": "vbox",
+      "state": {
+        "recommended": {
+          "badge": "Recommended",
+          "badge_bg": "accent"
+        },
+        "selected": {
+          "border": "2px solid",
+          "border_color": "accent"
+        }
+      },
+      "style": {
+        "bg": "card",
+        "border_radius": "lg",
+        "padding": "md",
+        "shadow": "card"
+      },
+      "widget": "card"
+    },
+    "provider_card": {
+      "clickable": true,
+      "fields": [
+        {
+          "label": "Provider Name",
+          "name": "provider_name",
+          "type": "string"
+        },
+        {
+          "label": "Icon URL",
+          "name": "provider_icon",
+          "type": "provider_icon"
+        },
+        {
+          "label": "API Key",
+          "name": "api_key_input",
+          "type": "password"
+        },
+        {
+          "default": "consumable",
+          "label": "Status",
+          "name": "status",
+          "readonly": true,
+          "type": "status_indicator"
+        }
+      ],
+      "header": {
+        "font_size": "md",
+        "font_weight": "semibold",
+        "icon_size": "32px",
+        "show_icon": true
+      },
+      "layout": "vbox",
+      "state": {
+        "connected": {
+          "border": "2px solid",
+          "border_color": "success"
+        },
+        "error": {
+          "border": "2px solid",
+          "border_color": "error"
+        },
+        "selected": {
+          "border": "2px solid",
+          "border_color": "accent"
+        }
+      },
+      "style": {
+        "bg": "card",
+        "border_radius": "lg",
+        "hover_effect": "elevate",
+        "padding": "xl",
+        "shadow": "card"
+      },
+      "widget": "card"
+    },
+    "section_divider": {
+      "style": {
+        "bg": "divider",
+        "height": "1px",
+        "margin": "md 0"
+      },
+      "widget": "separator"
+    },
+    "step_indicator": {
+      "layout": "hbox",
+      "step_style": {
+        "active_bg": "accent_hover",
+        "active_text": "inverse",
+        "circle_size": "28px",
+        "completed_bg": "accent",
+        "completed_text": "inverse",
+        "connector_bg": "border",
+        "connector_completed_bg": "accent",
+        "connector_width": "40px",
+        "pending_bg": "border",
+        "pending_text": "muted"
+      },
+      "style": {
+        "alignment": "center",
+        "spacing": "md"
+      },
+      "widget": "composite"
+    },
+    "toggle_field": {
+      "fields": [
+        "label",
+        "toggle"
+      ],
+      "layout": "row",
+      "style": {
+        "padding": "sm 0",
+        "spacing": "xl"
+      },
+      "toggle": {
+        "handle_bg": "primary",
+        "off_bg": "border",
+        "on_bg": "accent"
+      },
+      "widget": "hbox"
+    }
+  },
+  "qsettings_operations": {
+    "entries": [
+      {
+        "key": "wizard/provider_api_key",
+        "op": "write",
+        "value_source": "api_key",
+        "when": "on_leave AND step_id == 'provider'"
+      },
+      {
+        "key": "wizard/model_id",
+        "op": "write",
+        "value_source": "model_id",
+        "when": "on_leave AND step_id == 'model_pick'"
+      },
+      {
+        "key": "wizard/gateway_port",
+        "op": "write",
+        "value_source": "gateway_port",
+        "when": "on_leave AND step_id == 'gateway'"
+      },
+      {
+        "key": "wizard/memory_embedding_choice",
+        "op": "write",
+        "value_source": "memory_embedding_choice",
+        "when": "on_leave AND step_id == 'memory'"
+      },
+      {
+        "key": "wizard/web_search_provider",
+        "op": "write",
+        "value_source": "web_search_provider",
+        "when": "on_leave AND step_id == 'web_search'"
+      }
+    ],
+    "note": "完整QSettings键列表在实施时从 persist_llm_settings.py 提取"
+  },
+  "qss_template": {
+    "app_base": "QMainWindow {{ background-color: {bg_app}; }}\nQWidget {{ font-family: {font_ui}; font-size: {font_base}; color: {text_primary}; }}\n",
+    "button_primary": "QPushButton {{ background-color: {accent}; color: {text_inverse}; border: none; border-radius: {radius_md}px; padding: 6px 20px; font-weight: {weight_medium}; }}\nQPushButton:hover {{ background-color: {accent_hover}; }}\nQPushButton:pressed {{ background-color: {accent_pressed}; }}\nQPushButton:disabled {{ background-color: {accent_disabled}; }}\n",
+    "button_secondary": "QPushButton {{ background-color: transparent; color: {text_primary}; border: 1px solid {border_default}; border-radius: {radius_md}px; padding: 6px 20px; }}\nQPushButton:hover {{ background-color: {bg_card_hover}; border-color: {border_hover}; }}\n",
+    "card": "QFrame#card {{ background-color: {bg_card}; border-radius: {radius_lg}px; padding: {spacing_xl}px; }}\nQFrame#card:hover {{ background-color: {bg_card_hover}; }}\n",
+    "checkbox": "QCheckBox {{ spacing: 8px; }}\nQCheckBox::indicator:checked {{ background-color: {accent}; border-radius: 3px; }}\nQCheckBox::indicator:unchecked {{ border: 1px solid {border_default}; border-radius: 3px; }}\n",
+    "combo": "QComboBox {{ background-color: {bg_input}; border: 1px solid {border_default}; border-radius: {radius_md}px; padding: 4px 10px; color: {text_primary}; }}\nQComboBox:focus {{ border-color: {accent}; }}\nQComboBox::drop-down {{ border: none; }}\nQComboBox QAbstractItemView {{ background-color: {bg_card}; border: 1px solid {border_default}; selection-background-color: {accent}; }}\n",
+    "groupbox": "QGroupBox {{ border: 1px solid {border_default}; border-radius: {radius_lg}px; margin-top: 12px; padding-top: 16px; }}\nQGroupBox::title {{ subcontrol-origin: margin; left: 16px; padding: 0 4px; color: {text_secondary}; font-weight: {weight_medium}; }}\n",
+    "input": "QLineEdit {{ background-color: {bg_input}; border: 1px solid {border_default}; border-radius: {radius_md}px; padding: 6px 12px; color: {text_primary}; }}\nQLineEdit:focus {{ border-color: {accent}; }}\nQLineEdit:disabled {{ opacity: {opacity_disabled}; }}\n",
+    "list": "QListWidget {{ background-color: {bg_input}; border: 1px solid {border_default}; border-radius: {radius_md}px; outline: none; }}\nQListWidget::item {{ padding: 6px 12px; }}\nQListWidget::item:selected {{ background-color: {accent}; color: {text_inverse}; }}\nQListWidget::item:hover {{ background-color: {bg_card_hover}; }}\n",
+    "progress": "QProgressBar {{ background-color: {bg_card}; border: none; border-radius: 4px; height: 8px; text-align: center; }}\nQProgressBar::chunk {{ background-color: {accent}; border-radius: 4px; }}\n",
+    "scrollbar": "QScrollBar:vertical {{ background-color: transparent; width: 8px; margin: 0; }}\nQScrollBar::handle:vertical {{ background-color: {border_default}; border-radius: 4px; min-height: 30px; }}\nQScrollBar::handle:vertical:hover {{ background-color: {border_hover}; }}\nQScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {{ height: 0; }}\n",
+    "tab": "QTabWidget::pane {{ border: none; background-color: transparent; }}\nQTabBar::tab {{ background-color: transparent; color: {text_muted}; padding: 8px 16px; border-bottom: 2px solid transparent; }}\nQTabBar::tab:selected {{ color: {text_primary}; border-bottom: 2px solid {accent}; }}\nQTabBar::tab:hover {{ color: {text_secondary}; }}\n",
+    "tooltip": "QToolTip {{ background-color: {bg_tooltip}; color: {text_primary}; border: 1px solid {border_default}; border-radius: {radius_md}px; padding: 6px 10px; font-size: {font_sm}; }}\n"
+  },
+  "reset_mechanism": {
+    "clears": [
+      "auth_kind",
+      "auth_choice",
+      "api_key",
+      "model_id",
+      "model_display_name",
+      "model_selection_skipped",
+      "connection_tested",
+      "connection_verify_skipped",
+      "oauth_provider",
+      "oauth_token",
+      "qwen_plugin_enabled",
+      "custom_base_url",
+      "custom_api_format",
+      "custom_compatibility",
+      "custom_provider_id",
+      "custom_model_id",
+      "ollama_models"
+    ],
+    "preserves": [
+      "openrouter_token_provider",
+      "opencode_runtime"
+    ],
+    "trigger": "provider_switch"
+  },
+  "scope_mappings": {
+    "anthropic_thinking_selector": {
+      "hints": {
+        "label": "思考层级"
+      },
+      "widget": "QComboBox"
+    },
+    "api_key": {
+      "hints": {
+        "echo_mode": "Password",
+        "placeholder": "sk-您的密钥...",
+        "reveal_button": true
+      },
+      "widget": "QLineEdit"
+    },
+    "api_key_input": {
+      "behavior": "credential_input",
+      "hints": {
+        "echo_mode": "Password",
+        "placeholder": "API Key"
+      },
+      "widget": "QLineEdit"
+    },
+    "aws_region_selector": {
+      "hints": {
+        "label": "区域"
+      },
+      "widget": "QComboBox"
+    },
+    "base_url_input": {
+      "hints": {
+        "placeholder": "https://..."
+      },
+      "widget": "QLineEdit"
+    },
+    "boolean": {
+      "widget": "QCheckBox"
+    },
+    "cli_detected_label": {
+      "hints": {
+        "readonly": true
+      },
+      "widget": "QLabel"
+    },
+    "compat_mode_selector": {
+      "hints": {
+        "label": "兼容模式"
+      },
+      "widget": "QComboBox"
+    },
+    "device_code_display": {
+      "hints": {
+        "readonly": true
+      },
+      "widget": "QLabel"
+    },
+    "discover_button": {
+      "hints": {
+        "label": "发现模型"
+      },
+      "widget": "QPushButton"
+    },
+    "endpoint_url_input": {
+      "hints": {
+        "placeholder": "http://127.0.0.1:..."
+      },
+      "widget": "QLineEdit"
+    },
+    "enum": {
+      "widget": "QComboBox"
+    },
+    "float": {
+      "hints": {
+        "decimals": 2,
+        "max": 999999,
+        "min": 0
+      },
+      "widget": "QDoubleSpinBox"
+    },
+    "integer": {
+      "hints": {
+        "max": 999999,
+        "min": 0
+      },
+      "widget": "QSpinBox"
+    },
+    "login_button": {
+      "hints": {
+        "label": "登录"
+      },
+      "widget": "QPushButton"
+    },
+    "model_input_manual": {
+      "hints": {
+        "placeholder": "模型名（手填）"
+      },
+      "widget": "QLineEdit"
+    },
+    "model_selector_live": {
+      "behavior": "live_model_selector",
+      "hints": {
+        "label": "模型（运行时发现）"
+      },
+      "widget": "QComboBox"
+    },
+    "multiline": {
+      "hints": {
+        "height": "120px"
+      },
+      "widget": "QTextEdit"
+    },
+    "password": {
+      "hints": {
+        "echo_mode": "Password",
+        "min_width": "300px",
+        "placeholder": "请输入密码..."
+      },
+      "widget": "QLineEdit"
+    },
+    "poll_button": {
+      "hints": {
+        "label": "轮询"
+      },
+      "widget": "QPushButton"
+    },
+    "port_input": {
+      "hints": {
+        "max": 65535,
+        "min": 1
+      },
+      "widget": "QSpinBox"
+    },
+    "provider_icon": {
+      "hints": {
+        "readonly": true
+      },
+      "widget": "QLabel"
+    },
+    "select_multiple": {
+      "hints": {
+        "selection_mode": "multi"
+      },
+      "widget": "QListWidget"
+    },
+    "select_single": {
+      "widget": "QComboBox"
+    },
+    "status_indicator": {
+      "hints": {
+        "readonly": true
+      },
+      "widget": "QLabel"
+    },
+    "string": {
+      "hints": {
+        "placeholder": "请输入..."
+      },
+      "widget": "QLineEdit"
+    },
+    "test_button": {
+      "behavior": "test_connection",
+      "hints": {
+        "label": "测试连接"
+      },
+      "widget": "QPushButton"
+    },
+    "url": {
+      "hints": {
+        "placeholder": "https://..."
+      },
+      "widget": "QLineEdit"
+    }
+  },
+  "sqlite_operations": {
+    "access_rules": {
+      "runtime_read": "禁止（basepool仅灾难恢复，无用户明确指示不得访问）",
+      "write_on_leave": "允许",
+      "write_on_probe": "允许"
+    },
+    "note": "完整11张表声明在实施时从 probe_pool_store.py 提取, 此处声明机制和访问红线",
+    "tables": {
+      "pool_fact": {
+        "fields": {
+          "capabilities": "$cap",
+          "provider_id": "$spec.id"
+        },
+        "op": "upsert",
+        "when": "on_probe_refresh"
+      },
+      "pool_selection": {
+        "fields": {
+          "auth_kind": "$auth_kind",
+          "provider_id": "$spec.id",
+          "selection_mode": "USER_PIN"
+        },
+        "op": "upsert",
+        "when": "on_leave AND step_id == 'provider' AND connection_tested == true"
+      }
+    }
+  },
+  "step_archive": {
+    "channels": [
+      "channels",
+      "channels_skipped"
+    ],
+    "gateway": [
+      "gateway_port",
+      "gateway_bind",
+      "gateway_auth_mode",
+      "gateway_password",
+      "install_daemon",
+      "tailscale_mode",
+      "daemon_runtime",
+      "node_manager",
+      "workspace_path"
+    ],
+    "memory": [
+      "memory_embedding_choice",
+      "memory_embedding_api_key",
+      "memory_embedding_base_url",
+      "memory_embedding_model_id"
+    ],
+    "model_pick": [
+      "model_id",
+      "model_display_name",
+      "model_selection_skipped"
+    ],
+    "provider": [
+      "provider_id",
+      "auth_kind",
+      "api_key",
+      "oauth_token",
+      "custom_base_url",
+      "custom_api_format",
+      "custom_model_id",
+      "custom_compatibility",
+      "auth_choice",
+      "openrouter_token_provider",
+      "opencode_runtime",
+      "qwen_plugin_enabled",
+      "connection_tested",
+      "connection_verify_skipped"
+    ],
+    "skills": [
+      "skill_install_queue",
+      "skill_uninstall_queue"
+    ],
+    "web_search": [
+      "web_search_provider",
+      "web_search_api_key",
+      "web_search_base_url"
+    ]
+  },
+  "step_validation": {
+    "channels": {
+      "next_enabled": {
+        "always": true
+      }
+    },
+    "gateway": {
+      "next_enabled": {
+        "all_of": [
+          {
+            "field": "gateway_port",
+            "not_empty": true
+          }
+        ]
+      }
+    },
+    "init": {
+      "next_enabled": {
+        "always": true
+      }
+    },
+    "memory": {
+      "next_enabled": {
+        "always": true
+      }
+    },
+    "model_pick": {
+      "next_enabled": {
+        "any_of": [
+          {
+            "field": "model_id",
+            "not_empty": true
+          },
+          {
+            "equals": true,
+            "field": "model_selection_skipped"
+          }
+        ]
+      }
+    },
+    "provider": {
+      "next_enabled": {
+        "all_of": [
+          {
+            "field": "provider_id",
+            "not_empty": true
+          },
+          {
+            "any_of": [
+              {
+                "equals": true,
+                "field": "connection_tested"
+              },
+              {
+                "equals": true,
+                "field": "connection_verify_skipped"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "skills": {
+      "next_enabled": {
+        "always": true
+      }
+    },
+    "web_search": {
+      "next_enabled": {
+        "always": true
+      }
+    }
+  },
+  "step_value_pass": {
+    "channels": {
+      "fields": [
+        "channels",
+        "channels_skipped"
+      ],
+      "method": "embed_panel_self_sync"
+    },
+    "gateway": {
+      "daemon_runtime": "state.daemon_runtime",
+      "gateway_auth_mode": "state.gateway_auth_mode",
+      "gateway_bind": "state.gateway_bind",
+      "gateway_password": "state.gateway_password",
+      "gateway_port": "state.gateway_port",
+      "install_daemon": "state.install_daemon",
+      "node_manager": "state.node_manager",
+      "tailscale_mode": "state.tailscale_mode",
+      "workspace_path": "state.workspace_path"
+    },
+    "memory": {
+      "memory_embedding_api_key": "state.memory_embedding_api_key",
+      "memory_embedding_base_url": "state.memory_embedding_base_url",
+      "memory_embedding_choice": "state.memory_embedding_choice",
+      "memory_embedding_model_id": "state.memory_embedding_model_id"
+    },
+    "model_pick": {
+      "fields": [
+        "model_id",
+        "model_display_name",
+        "model_selection_skipped"
+      ],
+      "method": "embed_panel_self_sync"
+    },
+    "provider": {
+      "fields": [
+        "provider_id",
+        "auth_kind",
+        "api_key",
+        "oauth_token",
+        "custom_base_url",
+        "custom_api_format",
+        "custom_model_id",
+        "custom_compatibility",
+        "auth_choice",
+        "openrouter_token_provider",
+        "opencode_runtime",
+        "qwen_plugin_enabled",
+        "connection_tested",
+        "connection_verify_skipped"
+      ],
+      "method": "embed_panel_self_sync"
+    },
+    "skills": {
+      "fields": [
+        "skill_install_queue",
+        "skill_uninstall_queue"
+      ],
+      "method": "embed_panel_self_sync"
+    },
+    "web_search": {
+      "web_search_api_key": "state.web_search_api_key",
+      "web_search_base_url": "state.web_search_base_url",
+      "web_search_provider": "state.web_search_provider"
+    }
+  },
+  "taxonomy_map": {
+    "api_key:anthropic-messages:live_discovery": {
+      "behavior_chain": "on_anthropic_selected",
+      "fields": [
+        "api_key_input",
+        "test_button",
+        "model_selector_live",
+        "anthropic_thinking_selector"
+      ],
+      "preset": "provider_card"
+    },
+    "api_key:aws-bedrock:live_discovery": {
+      "behavior_chain": "on_aws_selected",
+      "fields": [
+        "aws_region_selector",
+        "test_button",
+        "model_selector_live"
+      ],
+      "preset": "provider_card"
+    },
+    "api_key:google-gemini:live_discovery": {
+      "behavior_chain": "on_provider_selected",
+      "fields": [
+        "api_key_input",
+        "test_button",
+        "model_selector_live"
+      ],
+      "preset": "provider_card"
+    },
+    "api_key:openai-compatible:generic": {
+      "behavior_chain": "on_provider_selected",
+      "fields": [
+        "api_key_input",
+        "test_button"
+      ],
+      "preset": "provider_card"
+    },
+    "api_key:openai-compatible:live_discovery": {
+      "behavior_chain": "on_provider_selected",
+      "fields": [
+        "api_key_input",
+        "test_button",
+        "model_selector_live"
+      ],
+      "preset": "provider_card"
+    },
+    "api_key:openai-compatible:live_discovery_web_search": {
+      "behavior_chain": "on_web_search_selected",
+      "fields": [
+        "api_key_input",
+        "test_button"
+      ],
+      "preset": "web_search_card"
+    },
+    "api_key:openai-compatible:static_catalog": {
+      "behavior_chain": "on_memory_selected",
+      "fields": [
+        "api_key_input",
+        "base_url_input",
+        "model_input_manual"
+      ],
+      "preset": "memory_embedding_card"
+    },
+    "aws_sdk:aws-bedrock:generic": {
+      "behavior_chain": "on_aws_selected",
+      "fields": [
+        "aws_region_selector",
+        "test_button",
+        "model_input_manual"
+      ],
+      "preset": "provider_card"
+    },
+    "aws_sdk:openai-compatible:generic": {
+      "behavior_chain": "on_aws_selected",
+      "fields": [
+        "aws_region_selector",
+        "test_button",
+        "model_input_manual"
+      ],
+      "preset": "provider_card"
+    },
+    "cli_reuse:openai-compatible:live_discovery": {
+      "behavior_chain": "on_provider_selected",
+      "fields": [
+        "cli_detected_label",
+        "model_selector_live"
+      ],
+      "preset": "provider_card"
+    },
+    "consumer:plugin:local": {
+      "behavior_chain": "",
+      "fields": [
+        "string",
+        "multiline"
+      ],
+      "preset": "consumer_card"
+    },
+    "custom_proxy:openai-compatible:generic": {
+      "behavior_chain": "on_provider_selected",
+      "fields": [
+        "base_url_input",
+        "api_key_input",
+        "compat_mode_selector",
+        "test_button",
+        "model_input_manual"
+      ],
+      "preset": "provider_card"
+    },
+    "demand:demand:demand": {
+      "behavior_chain": "",
+      "fields": [
+        "string",
+        "multiline"
+      ],
+      "preset": "demand_card"
+    },
+    "no_key:local-runtime:local_runtime": {
+      "behavior_chain": "on_local_provider_select",
+      "fields": [
+        "endpoint_url_input",
+        "port_input",
+        "discover_button"
+      ],
+      "preset": "local_provider_card"
+    },
+    "no_key:openai-compatible:generic": {
+      "behavior_chain": "on_provider_selected",
+      "fields": [
+        "display_name"
+      ],
+      "preset": "provider_card"
+    },
+    "no_key:openai-compatible:live_discovery_web_search": {
+      "behavior_chain": "on_web_search_selected",
+      "fields": [
+        "base_url_input"
+      ],
+      "preset": "web_search_card"
+    },
+    "no_key:openai-compatible:static_catalog": {
+      "behavior_chain": "on_memory_selected",
+      "fields": [
+        "display_name"
+      ],
+      "preset": "memory_embedding_card"
+    },
+    "oauth:openai-compatible:generic": {
+      "behavior_chain": "on_oauth_selected",
+      "fields": [
+        "login_button"
+      ],
+      "preset": "provider_card"
+    },
+    "oauth:openai-compatible:live_discovery": {
+      "behavior_chain": "on_oauth_selected",
+      "fields": [
+        "login_button",
+        "model_selector_live"
+      ],
+      "preset": "provider_card"
+    },
+    "token:openai-compatible:generic": {
+      "behavior_chain": "on_provider_selected",
+      "fields": [
+        "api_key_input",
+        "test_button"
+      ],
+      "preset": "provider_card"
+    },
+    "unknown:openai-compatible:generic": {
+      "behavior_chain": "on_provider_selected",
+      "fields": [
+        "base_url_input",
+        "api_key_input",
+        "model_input_manual"
+      ],
+      "preset": "provider_card"
+    }
+  },
+  "type_preset_map": {
+    "automation": "automation_card",
+    "channel": "channel_setup_card",
+    "cli": "generic_card",
+    "consumer": "consumer_card",
+    "demand": "demand_card",
+    "gateway": "gateway_card",
+    "memory": "generic_card",
+    "other": "generic_card",
+    "plugin": "generic_card",
+    "config": "generic_card",
+    "env": "generic_card",
+    "reference": "generic_card",
+    "onboarding": "generic_card",
+    "model": "model_selection_card",
+    "provider": "provider_card",
+    "web_search": "generic_card"
+  },
+  "visual_tokens": {
+    "animation": {
+      "duration": {
+        "fast": "100ms",
+        "normal": "200ms",
+        "slow": "300ms"
+      },
+      "easing": {
+        "default": "ease",
+        "in_out": "ease-in-out",
+        "out": "ease-out"
+      }
+    },
+    "border_radius": {
+      "lg": "8px",
+      "md": "6px",
+      "none": "0px",
+      "pill": "999px",
+      "sm": "3px",
+      "xl": "12px"
+    },
+    "colors": {
+      "bg": {
+        "app": "#0e0c0a",
+        "card": "#1a1614",
+        "card_hover": "#221e1b",
+        "card_selected": "#2a2520",
+        "input": "#1e1a17",
+        "input_focus": "#221e1b",
+        "modal": "#1a1614",
+        "modal_overlay": "rgba(0,0,0,0.55)",
+        "sidebar": "#141110",
+        "tooltip": "#2a2520"
+      },
+      "border": {
+        "default": "#2e2823",
+        "divider": "#1e1a17",
+        "error": "#e85a4a",
+        "focus": "#f37021",
+        "hover": "#3e3530"
+      },
+      "brand": {
+        "accent": "#f37021",
+        "accent_disabled": "#a8836a",
+        "accent_hover": "#ff8c42",
+        "accent_muted": "#f5e6d8",
+        "accent_pressed": "#d95f12"
+      },
+      "text": {
+        "disabled": "#6a5e52",
+        "error": "#e85a4a",
+        "inverse": "#0e0c0a",
+        "link": "#f37021",
+        "link_hover": "#ff8c42",
+        "muted": "#9a8a7a",
+        "primary": "#e8dcd0",
+        "secondary": "#c4b8a8",
+        "success": "#5a9e6f",
+        "warning": "#d9a840"
+      }
+    },
+    "opacity": {
+      "disabled": "0.4",
+      "hover_overlay": "0.08",
+      "muted": "0.6"
+    },
+    "shadow": {
+      "card": "0 1px 3px rgba(0,0,0,0.3)",
+      "card_hover": "0 4px 12px rgba(0,0,0,0.4)",
+      "dropdown": "0 8px 24px rgba(0,0,0,0.5)",
+      "focus_ring": "0 0 0 2px rgba(243,112,33,0.3)",
+      "modal": "0 12px 48px rgba(0,0,0,0.6)"
+    },
+    "spacing": {
+      "2xl": "20px",
+      "3xl": "24px",
+      "4xl": "32px",
+      "lg": "12px",
+      "md": "8px",
+      "sm": "4px",
+      "xl": "16px",
+      "xs": "2px"
+    },
+    "typography": {
+      "font_family": {
+        "mono": "\"Cascadia Code\", \"JetBrains Mono\", \"Consolas\", monospace",
+        "ui": "\"Segoe UI\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif"
+      },
+      "font_size": {
+        "base": "13px",
+        "h1": "28px",
+        "h2": "24px",
+        "h3": "20px",
+        "lg": "16px",
+        "md": "14px",
+        "sm": "12px",
+        "xl": "18px",
+        "xs": "11px"
+      },
+      "font_weight": {
+        "bold": "700",
+        "medium": "500",
+        "normal": "400",
+        "semibold": "600"
+      },
+      "line_height": {
+        "normal": "1.4",
+        "relaxed": "1.6",
+        "tight": "1.2"
+      }
+    }
+  },
+  "widget_library": {
+    "QCalendarWidget": {
+      "methods": [
+        "setSelectedDate",
+        "selectedDate",
+        "setMinimumDate",
+        "setMaximumDate",
+        "setFirstDayOfWeek",
+        "setGridVisible",
+        "setNavigationBarVisible",
+        "setDateEditEnabled",
+        "setDateEditAcceptDelay",
+        "setHorizontalHeaderFormat",
+        "setVerticalHeaderFormat"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {},
+        "selected": {
+          "bg": "accent",
+          "text": "inverse"
+        },
+        "today": {
+          "border": "1px solid accent"
+        }
+      },
+      "style_hints": {
+        "bg": "card",
+        "border_radius": "8px",
+        "nav_button_size": "30px",
+        "padding": "12px",
+        "table_padding": "4px"
+      }
+    },
+    "QCheckBox": {
+      "methods": [
+        "setChecked",
+        "isChecked",
+        "setText",
+        "text",
+        "setTristate",
+        "stateChanged",
+        "checkState",
+        "setCheckState"
+      ],
+      "states": {
+        "checked": {
+          "accent": "accent"
+        },
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {},
+        "tristate": {
+          "indicator_bg": "accent_muted"
+        },
+        "unchecked": {
+          "border": "default"
+        }
+      },
+      "style_hints": {
+        "indicator_size": "16px",
+        "spacing": "8px"
+      },
+      "subcontrols": [
+        "indicator"
+      ]
+    },
+    "QColorDialog": {
+      "methods": [
+        "setCurrentColor",
+        "currentColor",
+        "setOption",
+        "selectedColor",
+        "setCustomColor",
+        "customCount"
+      ],
+      "style_hints": {
+        "bg": "modal",
+        "min_height": "400px",
+        "min_width": "480px"
+      }
+    },
+    "QColumnView": {
+      "methods": [
+        "setModel",
+        "setSelectionMode",
+        "setResizeMode",
+        "setColumnWidths"
+      ],
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px"
+      },
+      "subcontrols": [
+        "left-arrow",
+        "right-arrow"
+      ]
+    },
+    "QComboBox": {
+      "methods": [
+        "addItem",
+        "addItems",
+        "currentData",
+        "setCurrentIndex",
+        "currentIndex",
+        "clear",
+        "setEditable",
+        "setPlaceholderText",
+        "setCurrentText",
+        "currentText",
+        "count",
+        "setMaxVisibleItems",
+        "setSizeAdjustPolicy",
+        "setInsertPolicy"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "focus": {
+          "border": "focus"
+        },
+        "hover": {
+          "border": "hover"
+        },
+        "normal": {
+          "border": "default"
+        },
+        "popup": {
+          "bg": "card",
+          "border": "1px solid default",
+          "selection_bg": "accent"
+        }
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "height": "32px",
+        "padding": "4px 10px"
+      },
+      "subcontrols": [
+        "drop-down",
+        "down-arrow"
+      ]
+    },
+    "QDateEdit": {
+      "methods": [
+        "setDate",
+        "date",
+        "setMinimumDate",
+        "setMaximumDate",
+        "setDisplayFormat",
+        "setCalendarPopup",
+        "setTimeSpec"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "focus": {
+          "border": "focus"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "height": "32px",
+        "padding": "4px 8px"
+      },
+      "subcontrols": [
+        "up-button",
+        "up-arrow",
+        "down-button",
+        "down-arrow"
+      ]
+    },
+    "QDateTimeEdit": {
+      "methods": [
+        "setDateTime",
+        "dateTime",
+        "setCalendarPopup",
+        "setDisplayFormat",
+        "setTimeSpec",
+        "setMinimumDateTime",
+        "setMaximumDateTime"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "focus": {
+          "border": "focus"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "height": "32px",
+        "padding": "4px 8px"
+      }
+    },
+    "QDial": {
+      "methods": [
+        "setValue",
+        "value",
+        "setMinimum",
+        "setMaximum",
+        "setNotchesVisible",
+        "setNotchTarget",
+        "setWrapping",
+        "setPageStep"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "groove_color": "border",
+        "handle_color": "accent",
+        "size": "80px"
+      }
+    },
+    "QDialog": {
+      "methods": [
+        "exec",
+        "accept",
+        "reject",
+        "done",
+        "setModal",
+        "setResult",
+        "result",
+        "setSizeGripEnabled"
+      ],
+      "states": {
+        "modal": {
+          "overlay": "modal_overlay"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "modal",
+        "border_radius": "12px",
+        "min_width": "400px",
+        "shadow": "modal"
+      }
+    },
+    "QDialogButtonBox": {
+      "methods": [
+        "addButton",
+        "removeButton",
+        "clearButtons",
+        "button",
+        "setStandardButtons",
+        "standardButtons",
+        "setCenterButtons",
+        "setOrientation"
+      ],
+      "states": {
+        "normal": {}
+      },
+      "style_hints": {
+        "alignment": "right",
+        "button_spacing": "8px",
+        "padding": "12px 0 0 0"
+      }
+    },
+    "QDockWidget": {
+      "methods": [
+        "setWidget",
+        "widget",
+        "setFeatures",
+        "features",
+        "setAllowedAreas",
+        "allowedAreas",
+        "setFloating",
+        "isFloating",
+        "setTitleBarWidget",
+        "titleBarWidget"
+      ],
+      "states": {
+        "floating": {
+          "bg": "card",
+          "shadow": "dropdown"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "button_size": "18px",
+        "title_bg": "sidebar",
+        "title_height": "32px",
+        "title_padding": "8px 12px",
+        "title_text_color": "primary"
+      },
+      "subcontrols": [
+        "title",
+        "close-button",
+        "float-button"
+      ]
+    },
+    "QDoubleSpinBox": {
+      "methods": [
+        "setValue",
+        "value",
+        "setMinimum",
+        "setMaximum",
+        "setDecimals",
+        "setSingleStep",
+        "setPrefix",
+        "setSuffix",
+        "setRange"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "focus": {
+          "border": "focus"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "height": "32px",
+        "padding": "4px 8px"
+      },
+      "subcontrols": [
+        "up-button",
+        "up-arrow",
+        "down-button",
+        "down-arrow"
+      ]
+    },
+    "QFileDialog": {
+      "methods": [
+        "setFileMode",
+        "setAcceptMode",
+        "setDefaultSuffix",
+        "setNameFilter",
+        "selectFile",
+        "selectedFiles",
+        "setDirectory",
+        "directory",
+        "setFilter",
+        "setOptions"
+      ],
+      "style_hints": {
+        "bg": "modal",
+        "min_height": "400px",
+        "min_width": "600px"
+      }
+    },
+    "QFontComboBox": {
+      "methods": [
+        "setCurrentFont",
+        "currentFont",
+        "setFontFilters",
+        "writingSystem"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "focus": {
+          "border": "focus"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "height": "32px",
+        "padding": "4px 10px"
+      }
+    },
+    "QFontDialog": {
+      "methods": [
+        "setCurrentFont",
+        "currentFont",
+        "setOption",
+        "selectedFont"
+      ],
+      "style_hints": {
+        "bg": "modal",
+        "min_height": "360px",
+        "min_width": "400px"
+      }
+    },
+    "QFrame": {
+      "methods": [
+        "setFrameShape",
+        "setFrameShadow",
+        "setStyleSheet"
+      ],
+      "shapes": {
+        "Box": "QFrame::Box",
+        "HLine": "QFrame::HLine",
+        "NoFrame": "QFrame::NoFrame",
+        "Panel": "QFrame::Panel",
+        "StyledPanel": "QFrame::StyledPanel",
+        "VLine": "QFrame::VLine"
+      },
+      "style_hints": {
+        "border_radius": "6px"
+      }
+    },
+    "QGroupBox": {
+      "methods": [
+        "setTitle",
+        "title",
+        "setCheckable",
+        "setChecked",
+        "setFlat",
+        "setAlignment"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "border": "1px solid",
+        "border_radius": "8px",
+        "font_weight": "medium",
+        "indicator_size": "16px",
+        "padding": "16px",
+        "title_bottom_margin": "8px",
+        "title_color": "secondary"
+      },
+      "subcontrols": [
+        "title",
+        "indicator"
+      ]
+    },
+    "QHeaderView": {
+      "methods": [
+        "setSectionResizeMode",
+        "setStretchLastSection",
+        "setSortIndicatorShown",
+        "setSortIndicator",
+        "setHighlightSections",
+        "setDefaultSectionSize",
+        "setMinimumSectionSize",
+        "setMaximumSectionSize",
+        "setSectionsClickable",
+        "setCascadingSectionResizes",
+        "setFirstSectionMovable"
+      ],
+      "states": {
+        "hover": {
+          "bg": "card_hover"
+        },
+        "normal": {},
+        "pressed": {
+          "bg": "card_selected"
+        }
+      },
+      "style_hints": {
+        "bg": "card",
+        "border": "none",
+        "font_weight": "medium",
+        "height": "32px",
+        "padding": "4px 8px",
+        "section_padding": "4px 8px",
+        "text_color": "secondary"
+      },
+      "subcontrols": [
+        "section",
+        "up-arrow",
+        "down-arrow"
+      ]
+    },
+    "QInputDialog": {
+      "methods": [
+        "setLabelText",
+        "setTextValue",
+        "textValue",
+        "setIntValue",
+        "intValue",
+        "setDoubleValue",
+        "doubleValue",
+        "setComboBoxItems",
+        "comboBoxItems",
+        "setOption",
+        "setInputMode",
+        "setIntRange",
+        "setDoubleRange",
+        "setIntStep",
+        "setDoubleDecimals"
+      ],
+      "style_hints": {
+        "field_height": "32px",
+        "min_width": "320px",
+        "padding": "20px",
+        "spacing": "lg"
+      }
+    },
+    "QLabel": {
+      "methods": [
+        "setText",
+        "text",
+        "setWordWrap",
+        "setAlignment",
+        "setPixmap",
+        "setOpenExternalLinks",
+        "setMargin",
+        "setIndent",
+        "setBuddy",
+        "setScaledContents",
+        "setTextFormat",
+        "selectedText",
+        "setSelection"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "color": "primary"
+      },
+      "variants": {
+        "caption": {
+          "color": "muted",
+          "font_size": "xs"
+        },
+        "error": {
+          "color": "error"
+        },
+        "heading": {
+          "color": "primary",
+          "font_size": "h3",
+          "font_weight": "bold"
+        },
+        "link": {
+          "color": "link",
+          "hover_color": "link_hover"
+        },
+        "subtitle": {
+          "color": "secondary",
+          "font_size": "base"
+        },
+        "success": {
+          "color": "success"
+        }
+      }
+    },
+    "QLineEdit": {
+      "methods": [
+        "setText",
+        "text",
+        "setPlaceholderText",
+        "clear",
+        "setReadOnly",
+        "setMaxLength",
+        "setEchoMode",
+        "setValidator",
+        "setFocus",
+        "setClearButtonEnabled",
+        "setAlignment",
+        "cursorPosition",
+        "home",
+        "end",
+        "backspace",
+        "del",
+        "selectAll",
+        "setSelection"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "error": {
+          "border": "error"
+        },
+        "focus": {
+          "border": "focus",
+          "shadow": "focus_ring"
+        },
+        "normal": {
+          "border": "default"
+        },
+        "readonly": {
+          "bg": "card"
+        }
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "height": "32px",
+        "padding": "8px 12px",
+        "placeholder_color": "muted",
+        "text_color": "primary"
+      }
+    },
+    "QListView": {
+      "methods": [
+        "setModel",
+        "setSelectionMode",
+        "setDragDropMode",
+        "setViewMode",
+        "setGridSize",
+        "setSpacing",
+        "setFlow",
+        "setWrapping",
+        "setMovement",
+        "setResizeMode"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px"
+      },
+      "subcontrols": [
+        "item"
+      ]
+    },
+    "QListWidget": {
+      "item_style": {
+        "height": "32px",
+        "hover_bg": "card_hover",
+        "padding": "6px 12px",
+        "selected_bg": "accent",
+        "selected_text": "inverse"
+      },
+      "methods": [
+        "addItem",
+        "addItems",
+        "clear",
+        "currentItem",
+        "currentRow",
+        "setCurrentRow",
+        "sortItems",
+        "item",
+        "count",
+        "takeItem",
+        "insertItem",
+        "setDragDropMode",
+        "setSelectionMode",
+        "setFlow",
+        "setWrapping",
+        "setSpacing",
+        "findItems"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "item_height": "32px"
+      }
+    },
+    "QMenu": {
+      "methods": [
+        "addAction",
+        "addMenu",
+        "addSeparator",
+        "clear",
+        "setTitle",
+        "setIcon",
+        "setEnabled",
+        "setFont",
+        "popup",
+        "exec",
+        "setDefaultAction"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {},
+        "selected": {
+          "item_bg": "accent",
+          "item_text": "inverse"
+        },
+        "separator": {
+          "bg": "divider",
+          "height": "1px",
+          "margin": "4px 12px"
+        }
+      },
+      "style_hints": {
+        "bg": "card",
+        "border": "1px solid",
+        "border_radius": "8px",
+        "item_height": "28px",
+        "item_padding": "6px 24px",
+        "padding": "4px 0",
+        "shadow": "dropdown"
+      },
+      "subcontrols": [
+        "item",
+        "indicator",
+        "separator",
+        "scroller",
+        "tearoff",
+        "right-arrow"
+      ]
+    },
+    "QMenuBar": {
+      "methods": [
+        "addMenu",
+        "addAction",
+        "addSeparator",
+        "clear",
+        "setActiveAction",
+        "setDefaultUp",
+        "setNativeMenuBar"
+      ],
+      "states": {
+        "normal": {},
+        "pressed": {
+          "item_bg": "accent",
+          "item_text": "inverse"
+        },
+        "selected": {
+          "item_bg": "card_hover"
+        }
+      },
+      "style_hints": {
+        "bg": "sidebar",
+        "height": "36px",
+        "item_padding": "6px 12px",
+        "item_spacing": "2px",
+        "padding": "0 8px"
+      },
+      "subcontrols": [
+        "item"
+      ]
+    },
+    "QMessageBox": {
+      "icon_sizes": {
+        "critical": "48px",
+        "information": "48px",
+        "question": "48px",
+        "warning": "48px"
+      },
+      "methods": [
+        "setText",
+        "setInformativeText",
+        "setDetailedText",
+        "setIcon",
+        "setStandardButtons",
+        "setDefaultButton",
+        "setEscapeButton",
+        "clickedButton",
+        "standardButton"
+      ],
+      "style_hints": {
+        "bg": "modal",
+        "border_radius": "12px",
+        "button_spacing": "8px",
+        "max_width": "480px",
+        "min_width": "320px",
+        "padding": "24px"
+      }
+    },
+    "QPlainTextEdit": {
+      "methods": [
+        "setPlainText",
+        "toPlainText",
+        "appendPlainText",
+        "clear",
+        "setPlaceholderText",
+        "setTabStopDistance",
+        "setLineWrapMode",
+        "setMaximumBlockCount",
+        "setReadOnly"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "focus": {
+          "border": "focus"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "font_family": "mono",
+        "min_height": "100px",
+        "padding": "8px 12px"
+      }
+    },
+    "QProgressBar": {
+      "methods": [
+        "setValue",
+        "value",
+        "setMinimum",
+        "setMaximum",
+        "setFormat",
+        "setTextVisible",
+        "setRange",
+        "reset"
+      ],
+      "states": {
+        "error": {
+          "chunk_bg": "error"
+        },
+        "indeterminate": {
+          "chunk_bg": "accent_muted"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "card",
+        "border_radius": "4px",
+        "chunk_bg": "accent",
+        "height": "8px",
+        "text_alignment": "center",
+        "text_color": "primary"
+      },
+      "subcontrols": [
+        "chunk"
+      ]
+    },
+    "QProgressDialog": {
+      "methods": [
+        "setLabelText",
+        "setCancelButtonText",
+        "setMinimum",
+        "setMaximum",
+        "setValue",
+        "wasCanceled",
+        "setAutoClose",
+        "setAutoReset",
+        "forceShow"
+      ],
+      "states": {
+        "cancelled": {},
+        "normal": {}
+      },
+      "style_hints": {
+        "bar_height": "6px",
+        "label_spacing": "md",
+        "min_width": "360px",
+        "padding": "20px"
+      }
+    },
+    "QPushButton": {
+      "methods": [
+        "setText",
+        "text",
+        "setEnabled",
+        "setIcon",
+        "click",
+        "setDefault",
+        "setFlat",
+        "setMenu",
+        "setIconSize",
+        "setShortcut",
+        "animateClick",
+        "toggle",
+        "setAutoRepeat",
+        "setCheckable",
+        "setChecked",
+        "isChecked"
+      ],
+      "states": {
+        "checked": {
+          "border": "2px solid",
+          "border_color": "accent"
+        },
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "hover": {},
+        "normal": {},
+        "pressed": {}
+      },
+      "style_hints": {
+        "border_radius": "6px",
+        "font_size": "base",
+        "font_weight": "medium",
+        "height": "34px",
+        "padding": "6px 20px"
+      },
+      "subcontrols": [
+        "menu-indicator"
+      ],
+      "variants": {
+        "danger": {
+          "bg": "error",
+          "hover_bg": "#d04a3a",
+          "text": "inverse"
+        },
+        "ghost": {
+          "bg": "transparent",
+          "hover_bg": "rgba(243,112,33,0.08)",
+          "text": "primary"
+        },
+        "primary": {
+          "bg": "accent",
+          "hover_bg": "accent_hover",
+          "pressed_bg": "accent_pressed",
+          "text": "inverse"
+        },
+        "secondary": {
+          "bg": "transparent",
+          "border": "1px solid default",
+          "hover_bg": "card_hover",
+          "text": "primary"
+        }
+      }
+    },
+    "QRadioButton": {
+      "methods": [
+        "setChecked",
+        "isChecked",
+        "setText",
+        "text",
+        "toggled",
+        "setAutoExclusive"
+      ],
+      "states": {
+        "checked": {
+          "accent": "accent"
+        },
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {},
+        "unchecked": {
+          "border": "default"
+        }
+      },
+      "style_hints": {
+        "indicator_size": "16px",
+        "spacing": "8px"
+      },
+      "subcontrols": [
+        "indicator"
+      ]
+    },
+    "QScrollArea": {
+      "methods": [
+        "setWidget",
+        "widget",
+        "setWidgetResizable",
+        "setHorizontalScrollBarPolicy",
+        "setVerticalScrollBarPolicy",
+        "takeWidget",
+        "ensureVisible",
+        "ensureWidgetVisible"
+      ],
+      "states": {
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "transparent",
+        "border": "none"
+      }
+    },
+    "QScrollBar": {
+      "methods": [
+        "setValue",
+        "value",
+        "setMinimum",
+        "setMaximum",
+        "setOrientation",
+        "setPageStep",
+        "setSingleStep",
+        "setInvertedAppearance"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "hover": {
+          "handle_bg": "border_hover"
+        },
+        "normal": {},
+        "pressed": {
+          "handle_bg": "accent"
+        }
+      },
+      "style_hints": {
+        "groove_bg": "transparent",
+        "handle_bg": "border_default",
+        "handle_hover_bg": "border_hover",
+        "handle_min": "30px",
+        "handle_radius": "4px",
+        "height": "8px",
+        "width": "8px"
+      },
+      "subcontrols": [
+        "handle",
+        "add-line",
+        "sub-line",
+        "add-page",
+        "sub-page",
+        "up-arrow",
+        "down-arrow",
+        "left-arrow",
+        "right-arrow"
+      ]
+    },
+    "QSizeGrip": {
+      "methods": [],
+      "states": {
+        "normal": {}
+      },
+      "style_hints": {
+        "color": "border",
+        "height": "12px",
+        "width": "12px"
+      }
+    },
+    "QSlider": {
+      "methods": [
+        "setValue",
+        "value",
+        "setMinimum",
+        "setMaximum",
+        "setOrientation",
+        "setTickPosition",
+        "setTickInterval",
+        "setPageStep",
+        "setTracking",
+        "setInvertedAppearance"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {},
+        "pressed": {
+          "handle_bg": "accent_pressed"
+        }
+      },
+      "style_hints": {
+        "groove_height": "4px",
+        "handle_size": "16px"
+      },
+      "subcontrols": [
+        "groove",
+        "handle"
+      ]
+    },
+    "QSpinBox": {
+      "methods": [
+        "setValue",
+        "value",
+        "setMinimum",
+        "setMaximum",
+        "setSingleStep",
+        "setPrefix",
+        "setSuffix",
+        "setRange",
+        "cleanText",
+        "setDisplayIntegerBase",
+        "setSpecialValueText"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "focus": {
+          "border": "focus"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "height": "32px",
+        "padding": "4px 8px"
+      },
+      "subcontrols": [
+        "up-button",
+        "up-arrow",
+        "down-button",
+        "down-arrow"
+      ]
+    },
+    "QSplitter": {
+      "methods": [
+        "addWidget",
+        "insertWidget",
+        "replaceWidget",
+        "setSizes",
+        "sizes",
+        "setOrientation",
+        "setCollapsible",
+        "setStretchFactor",
+        "setChildrenCollapsible",
+        "restoreState",
+        "saveState"
+      ],
+      "states": {
+        "hover": {
+          "handle_color": "hover"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "handle_color": "border",
+        "handle_hover_color": "hover",
+        "handle_width": "4px"
+      },
+      "subcontrols": [
+        "handle"
+      ]
+    },
+    "QStackedWidget": {
+      "methods": [
+        "addWidget",
+        "insertWidget",
+        "removeWidget",
+        "setCurrentIndex",
+        "currentIndex",
+        "setCurrentWidget",
+        "currentWidget",
+        "count",
+        "widget"
+      ],
+      "states": {
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "transparent"
+      }
+    },
+    "QStatusBar": {
+      "methods": [
+        "showMessage",
+        "clearMessage",
+        "addWidget",
+        "removeWidget",
+        "addPermanentWidget",
+        "removePermanentWidget",
+        "setSizeGripEnabled",
+        "currentMessage"
+      ],
+      "style_hints": {
+        "bg": "sidebar",
+        "border_top": "1px solid divider",
+        "font_size": "xs",
+        "height": "24px",
+        "padding": "2px 8px",
+        "text_color": "muted"
+      },
+      "subcontrols": [
+        "item"
+      ]
+    },
+    "QTabWidget": {
+      "methods": [
+        "addTab",
+        "insertTab",
+        "removeTab",
+        "setCurrentIndex",
+        "currentIndex",
+        "setTabText",
+        "setTabIcon",
+        "setTabEnabled",
+        "setTabVisible",
+        "clearTabs",
+        "setTabsClosable",
+        "setMovable",
+        "setDocumentMode"
+      ],
+      "states": {
+        "active": {
+          "border_bottom_color": "accent",
+          "text_color": "primary"
+        },
+        "hover": {
+          "text_color": "secondary"
+        },
+        "inactive": {
+          "text_color": "muted"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "active_tab_border": "accent",
+        "border_bottom": "2px solid",
+        "tab_bg": "transparent",
+        "tab_height": "36px",
+        "tab_padding": "8px 16px",
+        "tab_radius": "6px 6px 0 0"
+      },
+      "subcontrols": [
+        "pane",
+        "left-corner",
+        "right-corner",
+        "tab-bar"
+      ]
+    },
+    "QTableView": {
+      "header_style": {
+        "bg": "card",
+        "border": "none",
+        "font_weight": "medium",
+        "height": "32px",
+        "hover_bg": "card_hover",
+        "pressed_bg": "card_selected",
+        "text_color": "secondary"
+      },
+      "methods": [
+        "setModel",
+        "setSelectionBehavior",
+        "setSelectionMode",
+        "setShowGrid",
+        "hideRow",
+        "hideColumn",
+        "setColumnWidth",
+        "setRowHeight",
+        "resizeColumnsToContents",
+        "resizeRowsToContents",
+        "sortByColumn"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "grid_color": "border",
+        "header_height": "32px",
+        "row_height": "28px"
+      },
+      "subcontrols": [
+        "section"
+      ]
+    },
+    "QTableWidget": {
+      "methods": [
+        "setRowCount",
+        "setColumnCount",
+        "setItem",
+        "item",
+        "clearContents",
+        "setHorizontalHeaderLabels",
+        "setVerticalHeaderLabels",
+        "removeRow",
+        "removeColumn",
+        "insertRow",
+        "insertColumn",
+        "cellWidget",
+        "setCellWidget"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "grid_color": "border"
+      }
+    },
+    "QTextBrowser": {
+      "methods": [
+        "setHtml",
+        "toHtml",
+        "setMarkdown",
+        "toMarkdown",
+        "setSource",
+        "setOpenLinks",
+        "setOpenExternalLinks",
+        "setSearchPaths",
+        "clear",
+        "backward",
+        "forward",
+        "home"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "card",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "padding": "12px"
+      }
+    },
+    "QTextEdit": {
+      "methods": [
+        "setPlainText",
+        "toPlainText",
+        "setHtml",
+        "toHtml",
+        "clear",
+        "append",
+        "setPlaceholderText",
+        "insertPlainText",
+        "setMarkdown",
+        "toMarkdown",
+        "setAcceptRichText",
+        "setReadOnly",
+        "setTabStopDistance",
+        "setLineWrapMode",
+        "setTabChangesFocus"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "focus": {
+          "border": "focus"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "min_height": "80px",
+        "padding": "8px 12px"
+      }
+    },
+    "QTimeEdit": {
+      "methods": [
+        "setTime",
+        "time",
+        "setDisplayFormat",
+        "setCalendarPopup"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "focus": {
+          "border": "focus"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "height": "32px",
+        "padding": "4px 8px"
+      }
+    },
+    "QToolBar": {
+      "methods": [
+        "addAction",
+        "addSeparator",
+        "addWidget",
+        "clear",
+        "setMovable",
+        "setFloatable",
+        "setOrientation",
+        "setIconSize",
+        "setToolButtonStyle"
+      ],
+      "states": {
+        "floating": {
+          "bg": "card",
+          "border": "1px solid default",
+          "border_radius": "8px",
+          "shadow": "dropdown"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "sidebar",
+        "border": "none",
+        "handle_width": "3px",
+        "padding": "2px 4px",
+        "spacing": "2px"
+      },
+      "subcontrols": [
+        "handle",
+        "separator"
+      ]
+    },
+    "QToolBox": {
+      "methods": [
+        "addItem",
+        "insertItem",
+        "removeItem",
+        "setItemText",
+        "setItemIcon",
+        "setItemEnabled",
+        "currentIndex",
+        "setCurrentIndex",
+        "count"
+      ],
+      "states": {
+        "normal": {},
+        "selected": {
+          "font_weight": "semibold",
+          "tab_bg": "card_selected"
+        }
+      },
+      "style_hints": {
+        "border": "1px solid",
+        "border_radius": "6px",
+        "content_bg": "input",
+        "tab_bg": "card",
+        "tab_height": "36px",
+        "tab_padding": "8px 16px"
+      },
+      "subcontrols": [
+        "tab"
+      ]
+    },
+    "QToolButton": {
+      "methods": [
+        "setText",
+        "setIcon",
+        "setToolTip",
+        "click",
+        "setToolButtonStyle",
+        "setMenu",
+        "setPopupMode",
+        "setArrowType",
+        "setDefaultAction"
+      ],
+      "states": {
+        "checked": {
+          "border": "1px solid accent"
+        },
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "hover": {
+          "bg": "card_hover"
+        },
+        "normal": {},
+        "pressed": {}
+      },
+      "style_hints": {
+        "border_radius": "6px",
+        "height": "34px",
+        "icon_size": "18px",
+        "width": "34px"
+      },
+      "subcontrols": [
+        "menu-indicator",
+        "menu-button",
+        "menu-arrow"
+      ],
+      "variants": {
+        "default": {},
+        "menu": {
+          "indicator_size": "8px"
+        },
+        "toolbar": {
+          "bg": "transparent",
+          "hover_bg": "card_hover"
+        }
+      }
+    },
+    "QToolTip": {
+      "methods": [],
+      "states": {
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "tooltip",
+        "border": "1px solid default",
+        "border_radius": "6px",
+        "color": "primary",
+        "font_size": "xs",
+        "padding": "6px 10px",
+        "shadow": "dropdown"
+      }
+    },
+    "QTreeView": {
+      "methods": [
+        "setModel",
+        "setSelectionMode",
+        "setAnimated",
+        "setIndentation",
+        "setHeaderHidden",
+        "setRootIsDecorated",
+        "setExpandsOnDoubleClick",
+        "expandAll",
+        "collapseAll",
+        "expand",
+        "collapse",
+        "setColumnWidth"
+      ],
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "indentation": "20px"
+      },
+      "subcontrols": [
+        "branch",
+        "item"
+      ]
+    },
+    "QTreeWidget": {
+      "branch_style": {
+        "hover_bg": "card_hover",
+        "selected_bg": "accent"
+      },
+      "methods": [
+        "addTopLevelItem",
+        "clear",
+        "currentItem",
+        "setHeaderLabel",
+        "setHeaderLabels",
+        "topLevelItem",
+        "topLevelItemCount",
+        "expandAll",
+        "collapseAll",
+        "setColumnCount",
+        "setIndentation",
+        "setAnimated",
+        "setSelectionMode"
+      ],
+      "states": {
+        "disabled": {
+          "opacity": "disabled"
+        },
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "input",
+        "border": "1px solid",
+        "border_radius": "6px",
+        "indentation": "20px"
+      },
+      "subcontrols": [
+        "branch",
+        "item"
+      ]
+    },
+    "QWebEngineView": {
+      "methods": [
+        "load",
+        "setHtml",
+        "setUrl",
+        "url",
+        "page",
+        "setPage",
+        "history",
+        "back",
+        "forward",
+        "reload",
+        "stop",
+        "setZoomFactor",
+        "pageAction",
+        "findText"
+      ],
+      "states": {
+        "error": {
+          "bg": "card"
+        },
+        "loading": {},
+        "normal": {}
+      },
+      "style_hints": {
+        "bg": "app",
+        "min_height": "200px"
+      }
+    },
+    "QWizard": {
+      "methods": [
+        "addPage",
+        "page",
+        "setPage",
+        "setStartId",
+        "next",
+        "back",
+        "restart",
+        "currentId",
+        "visitedIds",
+        "setOption",
+        "setOptions",
+        "setPixmap",
+        "setTitleFormat",
+        "setSubTitleFormat",
+        "setButtonLayout",
+        "setSideWidget"
+      ],
+      "page_style": {
+        "padding": "24px",
+        "spacing": "xl"
+      },
+      "states": {
+        "normal": {},
+        "watermark": {
+          "pixmap_bg": "card"
+        }
+      },
+      "style_hints": {
+        "bg": "app",
+        "button_height": "34px",
+        "min_height": "500px",
+        "min_width": "600px",
+        "subtitle_font_size": "base",
+        "title_font_size": "h2"
+      }
+    }
+  }
+}

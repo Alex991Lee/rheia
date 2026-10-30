@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rheia — Server-grade OpenClaw, in one double-click</title>
+<meta name="description" content="Rheia is a Windows manager shell for OpenClaw: one pass installs WSL2 + Ubuntu + Node + official OpenClaw + a systemd gateway. Double-click and go.">
+<style>
+:root{--bg:#0d1117;--fg:#e6edf3;--dim:#9aa7b4;--line:#21262d;--accent:#f04438;--card:#161b22}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",sans-serif}
+a{color:#58a6ff;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+header{padding:88px 0 56px;text-align:center;border-bottom:1px solid var(--line)}
+h1{font-size:46px;margin:0 0 12px;letter-spacing:-1px}
+.tag{font-size:20px;color:var(--dim);margin:0 auto 32px;max-width:620px}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:14px 30px;border-radius:8px;font-weight:600;font-size:17px}
+.btn:hover{background:#d6382c;text-decoration:none}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg);margin-left:10px}
+.meta{margin-top:18px;font-size:13px;color:var(--dim);word-break:break-all}
+.lang{position:absolute;top:20px;right:24px;font-size:14px;color:var(--dim)}
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+h2{font-size:26px;margin:0 0 24px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+.card h3{margin:0 0 8px;font-size:17px}
+.card p{margin:0;color:var(--dim);font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left}
+th{color:var(--dim);font-weight:600}
+td.us{font-weight:700;color:#fff}
+code{background:#1f242c;padding:2px 6px;border-radius:4px;font-size:14px}
+ul{padding-left:20px}
+li{margin:6px 0}
+.note{background:#1b1f24;border-left:3px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;color:var(--dim);font-size:15px}
+footer{padding:40px 0 64px;color:var(--dim);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang"><a href="../">简体中文</a> | English</div>
+  <div class="wrap">
+    <h1>Rheia</h1>
+    <p class="tag">Server-grade OpenClaw on Windows — turned into one double-click.</p>
+    <a class="btn" href="https://github.com/Alex991Lee/rheia/releases/latest">Download Rheia-Setup.exe</a>
+    <a class="btn ghost" href="https://github.com/Alex991Lee/rheia">GitHub</a>
+    <div class="meta">3.53 MB &nbsp;|&nbsp; Windows 10 / 11 x64 &nbsp;|&nbsp; MIT License<br>SHA256 b8fa7567187beff0b4c65b85e26c811e94ccd101f45a4fa4016fe3fc16f49215</div>
+  </div>
+  <div class="wrap" style="margin-top:40px">
+    <img src="../screenshot.png" alt="Rheia main window" style="width:100%;border:1px solid var(--line);border-radius:12px">
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>What it does</h2>
+    <div class="grid">
+      <div class="card"><h3>Installs the whole chain</h3><p>WSL2 + Ubuntu + Node.js + official OpenClaw + a systemd gateway, in one pass. Ready when it finishes.</p></div>
+      <div class="card"><h3>Reuses your Ubuntu</h3><p>No dedicated distro. The Ubuntu you already run is the runtime — no second copy on disk.</p></div>
+      <div class="card"><h3>Always the official build</h3><p>No fork, no patch. Every upstream release is followed immediately, so you stay on the newest build.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Where it sits next to the official Windows options</h2>
+    <table>
+      <tr><th></th><th>Official PowerShell install</th><th>Official Windows Hub</th><th>Rheia</th></tr>
+      <tr><td>Form</td><td>Command-line install</td><td>WinUI desktop app</td><td class="us">Desktop shell</td></tr>
+      <tr><td>Runtime</td><td>Native Windows process</td><td>Provisions its own WSL distro</td><td class="us">Your existing WSL2 + Ubuntu</td></tr>
+      <tr><td>Existing Ubuntu</td><td>Not involved</td><td>Lives alongside it — a second distro on disk</td><td class="us">Reused, zero waste</td></tr>
+      <tr><td>Start at boot</td><td>You set it up yourself</td><td>Tray app</td><td class="us">systemd service, starts with the machine</td></tr>
+      <tr><td>Downloads in China</td><td>Upstream only</td><td>Upstream only</td><td class="us">Domestic / international mirrors, automatic</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Work-ready out of the box</h2>
+    <p>Once the gateway is up, the shell installs a set in the background:</p>
+    <ul>
+      <li><code>@openclaw/tavily-plugin</code> — web search</li>
+      <li><code>@mem9/mem9</code> — persistent memory</li>
+      <li><code>@weiwei2027/office-toolkit</code> — Word / Excel / PPT / PDF</li>
+      <li><code>@cindypapa/agent-browser</code> — browser automation</li>
+      <li><code>@paudyyin/summarize</code> · <code>@pskoett/self-improving-agent</code> · <code>@guipi888/find-skills</code> · <code>@spclaudehome/skill-vetter</code></li>
+    </ul>
+    <p>Companions are installed too: LibreOffice (the <code>soffice</code> engine), the Chrome kernel, and python-docx / python-pptx / openpyxl / pymupdf / reportlab.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>About the UI — full disclosure</h2>
+    <p>On some machines the UI flickers under PySide6 (QtWebEngine). The cause is in Chromium's compositor, not in application code. GPU flags, the D3D11 backend and reduced motion were all tried; they tame part of it, but we cannot guarantee every GPU.</p>
+    <div class="note">That is a trade-off known at selection time, not an incident. The real fix is on the roadmap: switch languages, buy a commercial licence.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>MIT License &nbsp;|&nbsp; OpenClaw is MIT (&copy; 2026 OpenClaw Foundation) &nbsp;|&nbsp; PySide6 core is LGPLv3</p>
+    <p><a href="../blog/en/install-openclaw-on-windows.html">Read: why Rheia exists (Chinese)</a></p>
+    <p>Free and open source. Donations are entirely optional. <a href="https://github.com/Alex991Lee/rheia">View the source on GitHub</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

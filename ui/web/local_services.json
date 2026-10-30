@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "comment": "高级配置本地服务解释层 — 字段逐项抄自 OpenClaw 官方文档 providers/{id}.md 的 Property 表 + Model discovery 段。local_api_key 是官方钦定的本地非 secret 标记（ollama-local / lmstudio / vllm-local 等），让 Gateway 识别为已配置的本地 provider 而非「缺 key」。程序按此表消费，代码零 hardcode。",
+  "services": [
+    {
+      "id": "ollama",
+      "label": "Ollama",
+      "native": true,
+      "api": "ollama",
+      "default_base": "http://127.0.0.1:11434",
+      "discover": "/api/tags",
+      "parse": { "key": "models", "field": "name" },
+      "dynamic_by": "implicit_env",
+      "env_key": "OLLAMA_API_KEY",
+      "local_api_key": "ollama-local"
+    },
+    {
+      "id": "lmstudio",
+      "label": "LM Studio",
+      "native": true,
+      "api": "openai-completions",
+      "default_base": "http://localhost:1234/v1",
+      "discover": "/api/v1/models",
+      "parse": { "key": "data", "field": "key" },
+      "dynamic_by": "implicit_env",
+      "env_key": "LM_API_TOKEN",
+      "local_api_key": "lmstudio"
+    },
+    {
+      "id": "vllm",
+      "label": "vLLM",
+      "native": true,
+      "api": "openai-completions",
+      "default_base": "http://127.0.0.1:8000/v1",
+      "discover": "/v1/models",
+      "parse": { "key": "data", "field": "id" },
+      "dynamic_by": "wildcard",
+      "env_key": "VLLM_API_KEY",
+      "local_api_key": "vllm-local"
+    },
+    {
+      "id": "sglang",
+      "label": "SGLang",
+      "native": true,
+      "api": "openai-completions",
+      "default_base": "http://127.0.0.1:30000/v1",
+      "discover": "/v1/models",
+      "parse": { "key": "data", "field": "id" },
+      "dynamic_by": "wildcard",
+      "env_key": "SGLANG_API_KEY",
+      "local_api_key": "sglang-local"
+    }
+  ]
+}

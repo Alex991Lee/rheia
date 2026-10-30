@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "source": "forge",
+    "description": "WebView 渲染配参 — 窗口尺寸、UA、加载策略、onboarding 引导列表"
+  },
+  "window": {
+    "title": "Rheia",
+    "min_width": 1024,
+    "min_height": 600,
+    "default_width": 1280,
+    "default_height": 800
+  },
+  "user_agent": {
+    "override": "",
+    "_comment": "留空则用 QWebEngineView 默认 UA"
+  },
+  "retry": {
+    "max_attempts": 10,
+    "delay_ms": 3000
+  },
+  "navigation": {
+    "allow_external_urls": false,
+    "_comment": "true = 外部链接在系统浏览器打开, false = 全拦"
+  },
+  "features": {
+    "javascript": true,
+    "javascript_can_open_windows": false,
+    "local_storage": true,
+    "plugins": false
+  },
+  "loading": {
+    "placeholder_text": "正在连接 OpenClaw Gateway…",
+    "timeout_ms": 30000,
+    "show_progress_bar": true
+  },
+  "onboarding": {
+    "enabled": true,
+    "delay_ms": 3000,
+    "probe_interval_ms": 2000,
+    "max_retries": 30,
+    "_comment_steps": "关键词驱动 — 每一步用 selectorKeywords 在 DOM 中搜索包含指定文本的可交互元素。搜索不到则用 fallback 展示纯文字提示。",
+
+    "steps": [
+      {
+        "id": "model_provider",
+        "title_zh": "第一步：配置 API 密钥",
+        "title_en": "Step 1: Configure API Key",
+        "body_zh": "点击「Model & Thinking」或「API Keys」进入提供商页面，填入你的 API Key。",
+        "body_en": "Click \"Model & Thinking\" or \"API Keys\" to enter provider settings and fill in your API key.",
+        "route": "/settings/model-providers",
+        "selectorKeywords": ["provider", "api", "key", "api_key", "add provider", "configure"],
+        "fallbackKeywords": []
+      },
+      {
+        "id": "model_pick",
+        "title_zh": "第二步：选择默认模型",
+        "title_en": "Step 2: Choose Default Model",
+        "body_zh": "在模型列表中选择要使用的 AI 模型。推荐保留默认值，后续可在对话中切换。",
+        "body_en": "Select an AI model from the list. Keep the default for now — you can switch later in chat.",
+        "route": "/settings/model-setup",
+        "selectorKeywords": ["model", "default model", "select model", "choose model"],
+        "fallbackKeywords": ["model"]
+      },
+      {
+        "id": "channel",
+        "title_zh": "第三步：绑定通道（可选）",
+        "title_en": "Step 3: Connect Channels (optional)",
+        "body_zh": "将 OpenClaw 连接到你常用的聊天平台，如 Telegram / Discord / Slack。此步骤可跳过。",
+        "body_en": "Connect OpenClaw to your chat platforms like Telegram, Discord, or Slack. Can be skipped.",
+        "route": "/settings/channels",
+        "selectorKeywords": ["channel", "telegram", "discord", "slack", "connect", "whatsapp"],
+        "fallbackKeywords": ["channel"]
+      },
+      {
+        "id": "chat",
+        "title_zh": "完成！开始对话",
+        "title_en": "Done! Start chatting",
+        "body_zh": "配置已就绪。点击「对话」按钮，开始和你的 AI 助手交流。",
+        "body_en": "Setup complete. Click \"Chat\" to start talking to your AI assistant.",
+        "route": "/chat",
+        "selectorKeywords": ["chat", "conversation", "new session", "message", "assistant"],
+        "fallbackKeywords": []
+      }
+    ]
+  }
+}

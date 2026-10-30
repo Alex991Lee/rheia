@@ -1,0 +1,19 @@
+{
+  "node": [
+    {"name": "淘宝源", "base": "https://npmmirror.com/mirrors/node", "domestic": true},
+    {"name": "中科大", "base": "https://mirrors.ustc.edu.cn/node", "domestic": true},
+    {"name": "官方", "base": "https://nodejs.org/dist", "domestic": false}
+  ],
+  "npm": [
+    {"name": "淘宝源", "registry": "https://registry.npmmirror.com", "domestic": true},
+    {"name": "腾讯云", "registry": "https://mirrors.cloud.tencent.com/npm/", "domestic": true},
+    {"name": "华为云", "registry": "https://repo.huaweicloud.com/repository/npm/", "domestic": true},
+    {"name": "官方", "registry": "https://registry.npmjs.org", "domestic": false}
+  ],
+  "rootfs": [
+    {"name": "清华镜像", "url": "https://mirrors.tuna.tsinghua.edu.cn/ubuntu-cloud-images/{codename}/current/{codename}-server-cloudimg-amd64-root.tar.xz", "domestic": true},
+    {"name": "华为云镜像", "url": "https://mirrors.huaweicloud.com/ubuntu-cloud-images/{codename}/current/{codename}-server-cloudimg-amd64-root.tar.xz", "domestic": true},
+    {"name": "中科大镜像", "url": "https://mirrors.ustc.edu.cn/ubuntu-cloud-images/{codename}/current/{codename}-server-cloudimg-amd64-root.tar.xz", "domestic": true},
+    {"name": "Ubuntu 官方", "url": "https://cloud-images.ubuntu.com/{codename}/current/{codename}-server-cloudimg-amd64-root.tar.xz", "domestic": false}
+  ]
+}
