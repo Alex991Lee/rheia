@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "last_updated": "2026-09-21T12:56:34.109411+00:00",
+  "types": [
+    {
+      "name": "channel",
+      "description": "messaging platform, instant messaging, social media chat application",
+      "description_zh": "消息平台、即时通讯、社交聊天渠道",
+      "vector": [],
+      "discovered_at": "",
+      "source": "seed",
+      "sample_names": []
+    },
+    {
+      "name": "automation",
+      "description": "automated task, scheduled job, event-driven automation workflow",
+      "description_zh": "自动化任务、定时执行、事件触发",
+      "vector": [],
+      "discovered_at": "",
+      "source": "seed",
+      "sample_names": []
+    },
+    {
+      "name": "gateway",
+      "description": "authentication, authorization, credential management, connection gateway",
+      "description_zh": "认证授权、凭证管理、连接网关",
+      "vector": [],
+      "discovered_at": "",
+      "source": "seed",
+      "sample_names": []
+    },
+    {
+      "name": "provider",
+      "description": "AI model provider, API service provider, LLM API endpoint",
+      "description_zh": "AI模型服务商、API接口提供商",
+      "vector": [],
+      "discovered_at": "",
+      "source": "seed",
+      "sample_names": []
+    },
+    {
+      "name": "model",
+      "description": "AI language model, embedding model, neural network model",
+      "description_zh": "AI语言模型、嵌入模型、神经网络模型",
+      "vector": [],
+      "discovered_at": "",
+      "source": "seed",
+      "sample_names": []
+    },
+    {
+      "name": "memory",
+      "description": "memory backend, vector storage, persistent storage, embedding database",
+      "description_zh": "记忆存储、向量数据库、持久化存储",
+      "vector": [],
+      "discovered_at": "",
+      "source": "seed",
+      "sample_names": []
+    },
+    {
+      "name": "web_search",
+      "description": "web search engine, online search service, internet search tool",
+      "description_zh": "网络搜索引擎、在线搜索服务",
+      "vector": [],
+      "discovered_at": "",
+      "source": "seed",
+      "sample_names": []
+    }
+  ]
+}

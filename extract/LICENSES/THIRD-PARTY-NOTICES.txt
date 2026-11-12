@@ -1,0 +1,25 @@
+Rheia — 第三方软件许可声明
+=====================================
+
+本产品使用以下第三方软件，按各自许可条款分发。
+
+1. Qt / PySide6
+   - 许可：GNU Lesser General Public License v3（LGPL-3.0）
+   - 使用方式：动态链接（pip 安装，运行时 import，不静态编译）
+   - 未修改 Qt / PySide6 任何源码
+   - LGPL 全文见本目录 LGPL-3.0.txt
+   - 用户可用自行编译的同版本 Qt/PySide6 库替换本产品附带的 .pyd/.dll
+
+2. QtWebEngine（Chromium 内核）
+   - 许可：LGPL-3.0（Qt 部分）+ Chromium 各组件各自许可
+   - QtWebEngine 内嵌 Chromium 及其第三方组件（icu、harfbuzz、ffmpeg、
+     v8、boringssl、zlib、libjpeg、libpng、libwebp、openh264 等）
+   - 各组件完整许可清单见 Qt 官方：
+     https://doc.qt.io/qt-6/qtwebengine-licensing.html
+   - 本项目不修改、不重新编译 Chromium 任何部分
+
+3. Python（嵌入运行时）
+   - 许可：PSF License，全文见 python/LICENSE.txt
+
+本产品为闭源软件。上述第三方组件均为动态链接使用，本产品自身代码不因
+LGPL 义务而开源。

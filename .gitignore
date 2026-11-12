@@ -1,0 +1,16 @@
+_backup_*
+*.bak-*
+*.bak
+__pycache__/
+*.pyc
+*.obj
+*.res
+*.exe
+*.tgz
+*.pdb
+Released/
+Rheia/
+card_new.exe
+
+# 内参，不进公开仓（2026-11-08）
+CODE-MAP.md

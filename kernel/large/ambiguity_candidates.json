@@ -1,0 +1,42 @@
+{
+  "auth_signals": {},
+  "field_aliases": {
+    "plugin": {
+      "Use Laguna models with the OpenClaw agent": 1,
+      "[OpenAI authentication](/providers/openai/authentication)": 1,
+      "[OpenAI image generation](/providers/openai/image-and-video)": 1
+    },
+    "provider_id": {
+      "Grok 4.7": 1,
+      "Local only": 1,
+      "Ollama Cloud": 1
+    }
+  },
+  "mechanism_terms": {
+    "dispatch": {
+      "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` | | Rewrite the full outgoing reply, including media | `reply_payload_sending` | | Rewrite outgoing text or cancel a send | `message_sending` | | Collect model timing without raw conversation text | `model_call_started` / `model_call_ended` | | Flush state after a turn or at shutdown | `agent_end` / `gateway_stop` | The catalog is the registration API, not a promise that every runtime emits every hook.": {
+        "hits": 1,
+        "label": "choose_a_hook_task_hook_reply_without_a_model_call_before_agent_"
+      }
+    },
+    "failure": {
+      "Refuse durable intake without logging policy exception contents": {
+        "hits": 1,
+        "label": "refuse_durable_intake_without_logging_policy_exception_contents"
+      }
+    },
+    "kind": {
+      "Non-empty list of standard OpenClaw tool ids handled by `before_tool_call` or `after_tool_call`, such as `exec`, `apply_patch`, or `spawn_agent`. Omit to match all tools. Empty lists, wildcards, blanks, and provider-specific aliases are invalid.": {
+        "hits": 1,
+        "label": "non_empty_list_of_standard_openclaw_tool_ids_handled_by_before_t"
+      }
+    },
+    "task": {
+      "Sanitize a channel event before durable ingress": {
+        "hits": 1,
+        "label": "sanitize_a_channel_event_before_durable_ingress"
+      }
+    }
+  },
+  "plugin_kinds": {}
+}

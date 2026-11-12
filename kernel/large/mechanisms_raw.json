@@ -1,0 +1,128 @@
+{
+  "pages": [
+    {
+      "caveats": {
+        "agent_end": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "before_agent_reply": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "before_agent_run": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "before_channel_ingress": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "before_prompt_build": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "before_tool_call": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "gateway_stop": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "message_sending": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "model_call_ended": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "model_call_started": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "reply": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |",
+        "reply_payload_sending": "### Choose a hook | Task | Hook | | -------------------------------------------------- | --------------------------------------------------------------------------- | | Reply without a model call | `before_agent_reply` → `{ handled: true, reply }`; omit `reply` for silence | | Sanitize a channel event before durable ingress | `before_channel_ingress` → `{ event }` | | Add context or narrow tools for a turn | `before_prompt_build` | | Gate model input on a supported runner | `before_agent_run` → `{ outcome: \"block\", reason, message? }` | | Block a tool or request approval | `before_tool_call` |"
+      },
+      "descs": {},
+      "emit_caveat": "The catalog is the registration API, not a promise that every runtime emits every hook.",
+      "id": "hooks",
+      "section_name": "hooks",
+      "source_url": "https://docs.openclaw.ai/plugins/hooks",
+      "terms": {
+        "task:add_context_or_narrow_tools_for_a_turn": "Add context or narrow tools for a turn",
+        "task:block_a_tool_or_request_approval": "Block a tool or request approval",
+        "task:collect_model_timing_without_raw_conversation_text": "Collect model timing without raw conversation text",
+        "task:flush_state_after_a_turn_or_at_shutdown": "Flush state after a turn or at shutdown",
+        "task:gate_model_input_on_a_supported_runner": "Gate model input on a supported runner",
+        "task:reply_without_a_model_call": "Reply without a model call",
+        "task:rewrite_outgoing_text_or_cancel_a_send": "Rewrite outgoing text or cancel a send",
+        "task:rewrite_the_full_outgoing_reply_including_media": "Rewrite the full outgoing reply, including media",
+        "task:sanitize_a_channel_event_before_durable_ingress": "Sanitize a channel event before durable ingress"
+      }
+    },
+    {
+      "caveats": {
+        "before_agent_finalize": "`before_agent_finalize` runs only when a harness is about to accept a natural final assistant answer."
+      },
+      "descs": {},
+      "emit_caveat": "",
+      "id": "prompt-and-session",
+      "section_name": "prompt-and-session",
+      "source_url": "https://docs.openclaw.ai/plugins/hooks/prompt-and-session",
+      "terms": {}
+    },
+    {
+      "caveats": {},
+      "descs": {
+        "after_compaction": "Observe compaction boundaries; no rewrite or veto result",
+        "after_tool_call": "Observe tool results, errors, and duration",
+        "agent_end": "Observe final messages, success state, and run duration",
+        "agent_turn_prepare": "Inspect drained plugin turn injections and add context before prompt hooks",
+        "before_agent_finalize": "Inspect the natural final answer and request one more model pass",
+        "before_agent_reply": "Short-circuit the model turn with a synthetic reply or silence",
+        "before_agent_run": "Inspect prompt and session messages before model submission; node turns gate Gateway input before worker-local context assembly",
+        "before_channel_ingress": "Transform a raw channel event before durable storage; failures refuse intake",
+        "before_compaction": "Observe compaction boundaries; no rewrite or veto result",
+        "before_dispatch": "Handle an inbound message before the normal model dispatch",
+        "before_install": "Inspect staged skill or plugin install material from a loaded plugin runtime",
+        "before_message_write": "Synchronous errors are logged; failed results are ignored",
+        "before_model_resolve": "Override provider, model, or the run's fallback chain before session messages load",
+        "before_prompt_build": "Add prompt context, narrow the current turn's submitted tools, or perform authorized post-policy enrichment",
+        "before_reset": "Observe session-reset events (`/reset`, programmatic resets)",
+        "before_tool_call": "Rewrite tool params, block execution, or require approval",
+        "channel_pairing_requested": "Observe newly created DM pairing requests",
+        "cron_changed": "Observe Gateway-owned cron lifecycle changes (added, updated, removed, started, finished, scheduled)",
+        "cron_reconciled": "Reconcile against the complete Gateway cron state after startup or reload",
+        "gateway_start": "Start or stop plugin-owned services with the Gateway",
+        "gateway_stop": "Start or stop plugin-owned services with the Gateway",
+        "heartbeat_prompt_contribution": "Add context for receipt-owned proactive automation jobs; retains its historical public name",
+        "inbound_claim": "Claim an inbound message for the plugin that owns its conversation binding",
+        "llm_input": "Provider input: system prompt, prompt, history",
+        "llm_output": "Provider output, usage, and the resolved `contextTokenBudget` when available",
+        "message_received": "Observe inbound content, sender, thread, and metadata",
+        "message_sending": "Rewrite outbound content or cancel delivery",
+        "message_sent": "Observe outbound delivery success or failure",
+        "model_call_ended": "Sanitized provider/model call metadata: timing, outcome, bounded request-id hashes. No prompt or response content.",
+        "model_call_started": "Sanitized provider/model call metadata: timing, outcome, bounded request-id hashes. No prompt or response content.",
+        "reply_dispatch": "Own reply generation and dispatch instead of the default model path",
+        "reply_payload_sending": "Mutate or cancel normalized reply payloads before delivery",
+        "resolve_exec_env": "Contribute plugin-owned environment variables to `exec`",
+        "session_end": "Track session lifecycle boundaries",
+        "session_start": "Track session lifecycle boundaries",
+        "skill_changed": "Observe committed live-skill create, update, and removal events",
+        "tool_result_persist": "Synchronous errors are logged; failed results are ignored"
+      },
+      "emit_caveat": "",
+      "id": "reference",
+      "section_name": "reference",
+      "source_url": "https://docs.openclaw.ai/plugins/hooks/reference",
+      "terms": {
+        "failure:block_the_run_tool_call_or_install": "Block the run, tool call, or install",
+        "failure:log_and_continue": "Log and continue",
+        "failure:log_and_continue_shutdown": "Log and continue shutdown",
+        "failure:log_and_skip_the_failed_handler_retain_other_successful_results": "Log and skip the failed handler; retain other successful results",
+        "failure:refuse_durable_intake_without_logging_policy_exception_contents": "Refuse durable intake without logging policy exception contents",
+        "group:hook_catalog": "Hook catalog",
+        "group:registration_and_execution": "Registration and execution",
+        "kind:claim": "Claim",
+        "kind:gate": "Gate",
+        "kind:modify": "Modify",
+        "kind:modify_gate": "Modify / gate",
+        "kind:no_asynchronous_timeout": "No asynchronous timeout",
+        "kind:observe": "Observe",
+        "kind:sync_modify": "Sync modify",
+        "kind:sync_modify_gate": "Sync modify / gate"
+      }
+    },
+    {
+      "caveats": {
+        "deliver": "Use the provider-owned callback only when the branch cannot be declared before entering the provider funnel; it is mutually exclusive with `deliver` and `durable`.",
+        "durable": "Use the provider-owned callback only when the branch cannot be declared before entering the provider funnel; it is mutually exclusive with `deliver` and `durable`.",
+        "false": "| | `visibleReplySent` | Set to `false` only when the provider produced no visible preview or final message.",
+        "message_sent": "Core also owns terminal `message_sent` observation when the adapter opts in."
+      },
+      "descs": {},
+      "emit_caveat": "",
+      "id": "sdk-channel-inbound",
+      "section_name": "sdk-channel-inbound",
+      "source_url": "https://docs.openclaw.ai/plugins/sdk-channel-inbound",
+      "terms": {
+        "group:delivery_settlement_contract": "Delivery settlement contract",
+        "kind:typed_intentional_no_send_reason_after_a_modifying_hook_or_paylo": "Typed intentional no-send reason after a modifying hook or payload policy settles. Hook cancellation can also include `cancelReason` and metadata. Core never calls the direct native adapter for a core-owned suppression."
+      }
+    }
+  ],
+  "updated_at": "2026-10-26T18:51:33.844049+00:00"
+}

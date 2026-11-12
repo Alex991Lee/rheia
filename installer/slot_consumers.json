@@ -1,0 +1,34 @@
+{
+  "_note": "随壳分发的**消费端声明**（装什么插件、入口在哪、装法是什么）。装机/自愈链路读它办事——不再硬编插件 id。运行时若 mani.json 里有更权威的声明（含与官方机制面的对账结论），以 mani 为准。",
+  "consumers": [
+    {
+      "id": "persona-slot-engine",
+      "type": "consumer",
+      "source": "personal-slot",
+      "spec": {
+        "plugin": "persona-slot-engine",
+        "entry": "./index.js",
+        "activation": { "onStartup": true }
+      },
+      "installer": {
+        "inject_script": "installer/inject_local_plugins.py",
+        "restart_required": true
+      },
+      "hooks": [
+        { "role": "user", "needs": "observe", "timing": "inbound" },
+        { "role": "assistant", "needs": "modify", "timing": "outbound" },
+        { "role": "trigger_capture", "needs": "observe", "timing": "turn_end",
+          "retired": true,
+          "why": "2026-09-22 撤：原来挂 message_sending（官方那条是 modify/gate，不许 observe）⇒ 派生端判非法 ⇒ 运行期无此钩子 ⇒ 计数恒 0。数轮次与到点送 dist 全归卡侧（corpus 带戳 + dueGate）；壳侧只留 message_received / message_sending / session_end 三条。" },
+        { "role": "trigger_distill", "needs": "observe", "timing": "session_end" }
+      ],
+      "scope": {
+        "corpus": "slot_agent_only",
+        "why": "语料只进『槽上这张卡对应的那个 agent』的会话；网关里其他 agent（宿主 main 等）的对话一律不许写卡 —— 判据用槽的边界账（slot_window.json 里的 agent_id / session_key），不另发明规则"
+      },
+      "access": ["conversation"],
+      "lifecycle": "critical",
+      "capabilities": ["critical-tool"]
+    }
+  ]
+}
