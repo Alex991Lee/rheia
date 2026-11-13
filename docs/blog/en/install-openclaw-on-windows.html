@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>How Rheia installs OpenClaw — about the time it takes to drink a coffee</title><style>
+:root{--bg:#0f1115;--fg:#e8eaf0;--mut:#9aa3b2;--acc:#946ce6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans SC",sans-serif}
+.wrap{max-width:820px;margin:0 auto;padding:56px 22px 90px}
+h1{font-size:34px;line-height:1.25;margin:0 0 14px}h2{font-size:22px;margin:38px 0 12px}
+p{color:#cfd5e0}code{background:#1b1f27;padding:2px 6px;border-radius:4px;font-size:14px}
+.btn{display:inline-block;background:var(--acc);color:#fff;text-decoration:none;padding:12px 22px;border-radius:8px;font-weight:600;margin:8px 10px 8px 0}
+.btn.ghost{background:transparent;border:1px solid #3a4050;color:var(--fg)}
+.mut{color:var(--mut);font-size:14px}a{color:#b79cff}
+ul{color:#cfd5e0}li{margin:6px 0}
+</style></head><body><div class="wrap">
+<p class="mut"><a href="../../index.html">Rheia</a> / blog</p>
+<h1>How Rheia installs OpenClaw</h1>
+<p>About the time it takes to drink a coffee. Measured on a clean environment: <strong>9 minutes 29 seconds</strong> from download to a working agent. Real-world time depends on your machine and your network.</p>
+<h2>1. Install</h2>
+<p>One installer, every command wrapped. No dependency hunting, no path juggling, no hand-edited WSL config — and no risk of deleting the wrong thing while you poke around.</p>
+<h2>2. Use</h2>
+<p>TerminalView and WebView are integrated: the native OpenClaw running inside WSL behaves like a local application. Everyday maintenance has a graphical path, so you are not forced into a bash session.</p>
+<h2>3. Optional</h2>
+<ul><li>Already running OpenClaw? Install Rheia as the deployment manager only — near-zero extra cost.</li><li>Only want OpenClaw? Uninstall Rheia and run <code>openclaw dashboard</code> inside WSL, then open it in your browser.</li></ul>
+<h2>4. Recovery</h2>
+<p>The installer brings up WSL and the VM automatically when the environment is clean. The gateway runs under systemd, so it returns after a reboot. Installation and resume-after-reboot are hands-off. On first run it self-adjusts against your installed OpenClaw version — a curated dictionary plus disambiguation rules — so Rheia stays aligned with the official release.</p>
+<h2>5. Uninstall</h2>
+<p>Install and uninstall are both clean. Nothing is left scattered behind.</p>
+<h2>6. Data</h2>
+<p>Data stays local. Nothing is uploaded, nothing is collected, no account is required.</p>
+<h2>7. Boundaries</h2>
+<p>No fork, no changes to the official kernel. No hosting, no subscription lock-in. What you install is the current official version, wrapped in a deployment layer.</p>
+<p><a class="btn" href="https://github.com/Alex991Lee/rheia/releases/latest">Download Rheia-Setup.exe</a></p>
+<p class="mut">Mirror: <a href="https://gitee.com/alexander081lee/rheia">Gitee</a> · Support: <a href="https://afdian.com/a/rheiashell">Afdian</a></p>
+</div></body></html>
