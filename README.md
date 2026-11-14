@@ -8,7 +8,7 @@ Download, double-click, wait for the progress bar — and you get the same OpenC
 
 **[⬇ Download Rheia-Setup.exe](./Rheia-Setup.exe)**
 
-☕ **[爱发电 / Afdian](https://afdian.com/a/rheiashell)** — 赞助这个项目 · Support this project
+☕ **Now on Afdian (已入驻爱发电)** — Rheia is published and supported through our creator page: **[爱发电 / Afdian](https://afdian.com/a/rheiashell)**. Updates, downloads and support all live there.
 
 📖 **[Why Rheia exists](https://alex991lee.github.io/rheia/blog/en/install-openclaw-on-windows.html)** · 3.32 MB · SHA256 `62b046bd4547f05dd6d67b4c9cf5ca081b527bb4320923334eb16bf04a7ac40e`
 
