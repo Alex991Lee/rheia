@@ -6,7 +6,7 @@ Download, double-click, wait for the progress bar — and you get the same OpenC
 
 **English** | **[简体中文](自述文件.md)**
 
-**[⬇ Download Rheia-Setup.exe](./Rheia-Setup.exe)**
+**[⬇ Download Rheia-Setup.exe](https://github.com/Alex991Lee/rheia/releases/latest)** · **[Gitee mirror](https://gitee.com/alexander081lee/rheia/releases)**
 
 ☕ **Now on Afdian (已入驻爱发电)** — Rheia is published and supported through our creator page: **[爱发电 / Afdian](https://afdian.com/a/rheiashell)**. Updates, downloads and support all live there.
 
